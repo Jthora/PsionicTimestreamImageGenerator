@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */; };
+		FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA224FD864B00BD32E7 /* ViewController.swift */; };
+		FA8CADA524FD865300BD32E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA424FD865300BD32E7 /* Assets.xcassets */; };
+		FA8CADA824FD865300BD32E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA624FD865300BD32E7 /* Main.storyboard */; };
+		FA8CADB424FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */; };
+		FA8CADBF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA8CADB024FD865400BD32E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA8CAD9524FD864B00BD32E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA8CAD9C24FD864B00BD32E7;
+			remoteInfo = PsionicTimeMap_ImageProducer;
+		};
+		FA8CADBB24FD865400BD32E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA8CAD9524FD864B00BD32E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA8CAD9C24FD864B00BD32E7;
+			remoteInfo = PsionicTimeMap_ImageProducer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsionicTimeMap_ImageProducer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA8CADA224FD864B00BD32E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA8CADA424FD865300BD32E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA8CADA724FD865300BD32E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA8CADA924FD865300BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8CADAA24FD865300BD32E7 /* PsionicTimeMap_ImageProducer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PsionicTimeMap_ImageProducer.entitlements; sourceTree = "<group>"; };
+		FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimeMap_ImageProducerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicTimeMap_ImageProducerTests.swift; sourceTree = "<group>"; };
+		FA8CADB524FD865400BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimeMap_ImageProducerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicTimeMap_ImageProducerUITests.swift; sourceTree = "<group>"; };
+		FA8CADC024FD865400BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA8CAD9A24FD864B00BD32E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADAC24FD865400BD32E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADB724FD865400BD32E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA8CAD9424FD864B00BD32E7 = {
+			isa = PBXGroup;
+			children = (
+				FA8CAD9F24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */,
+				FA8CADB224FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */,
+				FA8CADBD24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */,
+				FA8CAD9E24FD864B00BD32E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA8CAD9E24FD864B00BD32E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */,
+				FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */,
+				FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA8CAD9F24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */ = {
+			isa = PBXGroup;
+			children = (
+				FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */,
+				FA8CADA224FD864B00BD32E7 /* ViewController.swift */,
+				FA8CADA424FD865300BD32E7 /* Assets.xcassets */,
+				FA8CADA624FD865300BD32E7 /* Main.storyboard */,
+				FA8CADA924FD865300BD32E7 /* Info.plist */,
+				FA8CADAA24FD865300BD32E7 /* PsionicTimeMap_ImageProducer.entitlements */,
+			);
+			path = PsionicTimeMap_ImageProducer;
+			sourceTree = "<group>";
+		};
+		FA8CADB224FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */,
+				FA8CADB524FD865400BD32E7 /* Info.plist */,
+			);
+			path = PsionicTimeMap_ImageProducerTests;
+			sourceTree = "<group>";
+		};
+		FA8CADBD24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */,
+				FA8CADC024FD865400BD32E7 /* Info.plist */,
+			);
+			path = PsionicTimeMap_ImageProducerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducer" */;
+			buildPhases = (
+				FA8CAD9924FD864B00BD32E7 /* Sources */,
+				FA8CAD9A24FD864B00BD32E7 /* Frameworks */,
+				FA8CAD9B24FD864B00BD32E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PsionicTimeMap_ImageProducer;
+			productName = PsionicTimeMap_ImageProducer;
+			productReference = FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA8CADAE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerTests" */;
+			buildPhases = (
+				FA8CADAB24FD865400BD32E7 /* Sources */,
+				FA8CADAC24FD865400BD32E7 /* Frameworks */,
+				FA8CADAD24FD865400BD32E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA8CADB124FD865400BD32E7 /* PBXTargetDependency */,
+			);
+			name = PsionicTimeMap_ImageProducerTests;
+			productName = PsionicTimeMap_ImageProducerTests;
+			productReference = FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA8CADB924FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerUITests" */;
+			buildPhases = (
+				FA8CADB624FD865400BD32E7 /* Sources */,
+				FA8CADB724FD865400BD32E7 /* Frameworks */,
+				FA8CADB824FD865400BD32E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA8CADBC24FD865400BD32E7 /* PBXTargetDependency */,
+			);
+			name = PsionicTimeMap_ImageProducerUITests;
+			productName = PsionicTimeMap_ImageProducerUITests;
+			productReference = FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA8CAD9524FD864B00BD32E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Jordan Trana";
+				TargetAttributes = {
+					FA8CAD9C24FD864B00BD32E7 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					FA8CADAE24FD865400BD32E7 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = FA8CAD9C24FD864B00BD32E7;
+					};
+					FA8CADB924FD865400BD32E7 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = FA8CAD9C24FD864B00BD32E7;
+					};
+				};
+			};
+			buildConfigurationList = FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimeMap_ImageProducer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA8CAD9424FD864B00BD32E7;
+			productRefGroup = FA8CAD9E24FD864B00BD32E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */,
+				FA8CADAE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */,
+				FA8CADB924FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA8CAD9B24FD864B00BD32E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8CADA524FD865300BD32E7 /* Assets.xcassets in Resources */,
+				FA8CADA824FD865300BD32E7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADAD24FD865400BD32E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADB824FD865400BD32E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA8CAD9924FD864B00BD32E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */,
+				FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADAB24FD865400BD32E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8CADB424FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8CADB624FD865400BD32E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8CADBF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA8CADB124FD865400BD32E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */;
+			targetProxy = FA8CADB024FD865400BD32E7 /* PBXContainerItemProxy */;
+		};
+		FA8CADBC24FD865400BD32E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */;
+			targetProxy = FA8CADBB24FD865400BD32E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA8CADA624FD865300BD32E7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA8CADA724FD865300BD32E7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA8CADC124FD865400BD32E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA8CADC224FD865400BD32E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		FA8CADC424FD865400BD32E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FA8CADC524FD865400BD32E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FA8CADC724FD865400BD32E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimeMap_ImageProducer.app/Contents/MacOS/PsionicTimeMap_ImageProducer";
+			};
+			name = Debug;
+		};
+		FA8CADC824FD865400BD32E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimeMap_ImageProducer.app/Contents/MacOS/PsionicTimeMap_ImageProducer";
+			};
+			name = Release;
+		};
+		FA8CADCA24FD865400BD32E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PsionicTimeMap_ImageProducer;
+			};
+			name = Debug;
+		};
+		FA8CADCB24FD865400BD32E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H4H7UN3F3K;
+				INFOPLIST_FILE = PsionicTimeMap_ImageProducerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PsionicTimeMap_ImageProducer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimeMap_ImageProducer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8CADC124FD865400BD32E7 /* Debug */,
+				FA8CADC224FD865400BD32E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8CADC424FD865400BD32E7 /* Debug */,
+				FA8CADC524FD865400BD32E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8CADC724FD865400BD32E7 /* Debug */,
+				FA8CADC824FD865400BD32E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA8CADCA24FD865400BD32E7 /* Debug */,
+				FA8CADCB24FD865400BD32E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA8CAD9524FD864B00BD32E7 /* Project object */;
+}
