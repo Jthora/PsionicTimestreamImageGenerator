@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -674,7 +676,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PsionicTimeMap_ImageProducer" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -704,7 +706,7 @@
         <!--Psionic Timestream Image Generator-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Psionic Timestream Image Generator" id="XfG-lQ-9wD" customClass="ViewController" customModule="PsionicTimeMap_ImageProducer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Psionic Timestream Image Generator" id="XfG-lQ-9wD" customClass="ViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="654" height="212"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -949,7 +951,7 @@
                                 <rect key="frame" x="388" y="138" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="755-Cd-pDB">
-                                <rect key="frame" x="570" y="166" width="32" height="32"/>
+                                <rect key="frame" x="579" y="170.5" width="23" height="23"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="info.circle" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pPR-s0-RLf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="20"/>
@@ -975,7 +977,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-wa-MMJ">
-                                <rect key="frame" x="530" y="166" width="32" height="32"/>
+                                <rect key="frame" x="548" y="170" width="23" height="23.5"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="gearshape" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="BmU-Hx-aj9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -1093,6 +1095,96 @@
             </objects>
             <point key="canvasLocation" x="162" y="659"/>
         </scene>
+        <!--Select Location View Controller-->
+        <scene sceneID="PZx-MU-nWA">
+            <objects>
+                <viewController id="5gf-sX-ZK8" customClass="SelectLocationViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="bPn-ZB-1fi">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="360"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <mapView mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXM-rn-Loq">
+                                <rect key="frame" x="20" y="60" width="320" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="9j2-n1-0ra"/>
+                                    <constraint firstAttribute="height" constant="240" id="TPk-GN-uzZ"/>
+                                </constraints>
+                            </mapView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LpU-pU-flE">
+                                <rect key="frame" x="201" y="13" width="146" height="32"/>
+                                <buttonCell key="cell" type="push" title="Select Location" bezelStyle="rounded" image="location.fill.viewfinder" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iW9-oI-eyN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectLocationButtonClicked:" target="5gf-sX-ZK8" id="9Po-R9-CY0"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TAg-GE-oIY">
+                                <rect key="frame" x="13" y="13" width="76" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wVF-rb-ZjW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rdr-UZ-QNS">
+                                <rect key="frame" x="79" y="320" width="172" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="V1h-TS-IUo">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uE0-ZU-do9">
+                                <rect key="frame" x="18" y="322" width="55" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="City/Zip:" id="0aM-Be-Kh0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="deI-M6-bgs">
+                                <rect key="frame" x="252" y="313" width="95" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" image="magnifyingglass" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dT6-uR-L72">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="searchButtonClicked:" target="5gf-sX-ZK8" id="neD-7G-zET"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="TAg-GE-oIY" secondAttribute="bottom" constant="20" symbolic="YES" id="23f-CI-bNm"/>
+                            <constraint firstAttribute="trailing" secondItem="nXM-rn-Loq" secondAttribute="trailing" constant="20" symbolic="YES" id="4QP-Ck-eA4"/>
+                            <constraint firstItem="Rdr-UZ-QNS" firstAttribute="centerY" secondItem="deI-M6-bgs" secondAttribute="centerY" id="4sr-Mx-hip"/>
+                            <constraint firstItem="uE0-ZU-do9" firstAttribute="leading" secondItem="bPn-ZB-1fi" secondAttribute="leading" constant="20" symbolic="YES" id="5AV-jv-LCR"/>
+                            <constraint firstItem="nXM-rn-Loq" firstAttribute="top" secondItem="deI-M6-bgs" secondAttribute="bottom" constant="20" symbolic="YES" id="Gve-44-WYr"/>
+                            <constraint firstItem="uE0-ZU-do9" firstAttribute="centerY" secondItem="Rdr-UZ-QNS" secondAttribute="centerY" id="Jbm-sd-vDv"/>
+                            <constraint firstItem="TAg-GE-oIY" firstAttribute="top" secondItem="nXM-rn-Loq" secondAttribute="bottom" constant="20" symbolic="YES" id="LhC-Zp-7BJ"/>
+                            <constraint firstItem="deI-M6-bgs" firstAttribute="top" secondItem="bPn-ZB-1fi" secondAttribute="top" constant="20" symbolic="YES" id="Lzk-QS-gxX"/>
+                            <constraint firstItem="deI-M6-bgs" firstAttribute="leading" secondItem="Rdr-UZ-QNS" secondAttribute="trailing" constant="8" symbolic="YES" id="N4J-x7-e4N"/>
+                            <constraint firstAttribute="bottom" secondItem="LpU-pU-flE" secondAttribute="bottom" constant="20" symbolic="YES" id="Rc0-k8-R3q"/>
+                            <constraint firstItem="TAg-GE-oIY" firstAttribute="leading" secondItem="bPn-ZB-1fi" secondAttribute="leading" constant="20" symbolic="YES" id="RiF-Wk-T8n"/>
+                            <constraint firstItem="nXM-rn-Loq" firstAttribute="leading" secondItem="bPn-ZB-1fi" secondAttribute="leading" constant="20" symbolic="YES" id="XDC-Cb-cAB"/>
+                            <constraint firstItem="LpU-pU-flE" firstAttribute="top" secondItem="nXM-rn-Loq" secondAttribute="bottom" constant="20" symbolic="YES" id="dV9-Ua-96n"/>
+                            <constraint firstAttribute="trailing" secondItem="LpU-pU-flE" secondAttribute="trailing" constant="20" symbolic="YES" id="dhb-fj-Mn4"/>
+                            <constraint firstItem="Rdr-UZ-QNS" firstAttribute="leading" secondItem="uE0-ZU-do9" secondAttribute="trailing" constant="8" symbolic="YES" id="fSh-ix-8lS"/>
+                            <constraint firstAttribute="trailing" secondItem="deI-M6-bgs" secondAttribute="trailing" constant="20" symbolic="YES" id="lGu-6o-h95"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="nXM-rn-Loq" id="361-X0-BJW"/>
+                        <outlet property="searchBarTextField" destination="Rdr-UZ-QNS" id="0fF-cs-6o6"/>
+                    </connections>
+                </viewController>
+                <customObject id="7Sr-xj-mVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-406" y="955"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="Ozt-KN-1qM">
             <objects>
@@ -1201,25 +1293,87 @@
                                     <segue destination="lqN-43-G0f" kind="modal" id="7v0-7O-1aN"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4tu-N8-0PA">
+                                <rect key="frame" x="18" y="170" width="58" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Latitude:" id="gKx-m7-2li">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MLP-g5-1l9">
+                                <rect key="frame" x="18" y="146" width="69" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Longitude:" id="LAC-7J-JFJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IgI-rr-4gI">
+                                <rect key="frame" x="82" y="168" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="s9h-aX-Jo6"/>
+                                    <constraint firstAttribute="height" constant="21" id="xV3-xl-3B1"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="mjf-YX-uRH">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="NXn-Gw-q8C"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDZ-RQ-Fyo">
+                                <rect key="frame" x="93" y="144" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="EPc-Nh-yAj"/>
+                                    <constraint firstAttribute="height" constant="21" id="mIY-fP-Gm0"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="FS0-S2-X8m">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Vb8-As-E02"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-1C-sED">
+                                <rect key="frame" x="13" y="111" width="196" height="32"/>
+                                <buttonCell key="cell" type="push" title="Select Location On Map" bezelStyle="rounded" image="mappin.and.ellipse" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CS3-dW-iUK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="5gf-sX-ZK8" kind="modal" id="9bu-VF-LcY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="t2V-Mz-Mc2" firstAttribute="centerY" secondItem="ETa-HR-b2Z" secondAttribute="centerY" id="09O-bJ-328"/>
+                            <constraint firstItem="MLP-g5-1l9" firstAttribute="top" secondItem="4tu-N8-0PA" secondAttribute="bottom" constant="8" symbolic="YES" id="6To-Mo-Xie"/>
                             <constraint firstItem="YNz-Bm-v4m" firstAttribute="leading" secondItem="AcM-ce-T4D" secondAttribute="trailing" constant="8" symbolic="YES" id="7f7-Ed-460"/>
+                            <constraint firstItem="4tu-N8-0PA" firstAttribute="top" secondItem="71s-U4-dC8" secondAttribute="bottom" constant="8" symbolic="YES" id="9mE-Bc-zX2"/>
+                            <constraint firstItem="pBU-1C-sED" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="M4t-yW-vhV"/>
                             <constraint firstItem="l0a-QK-PNZ" firstAttribute="top" secondItem="asf-5w-Z2U" secondAttribute="top" id="P4h-OH-oef"/>
                             <constraint firstAttribute="trailing" secondItem="l0a-QK-PNZ" secondAttribute="trailing" constant="20" symbolic="YES" id="RW7-3v-pdU"/>
                             <constraint firstAttribute="trailing" secondItem="FSO-h1-fY8" secondAttribute="trailing" constant="20" symbolic="YES" id="SRJ-hw-SJr"/>
                             <constraint firstItem="d91-rN-H4Z" firstAttribute="leading" secondItem="71s-U4-dC8" secondAttribute="trailing" constant="8" symbolic="YES" id="Sdd-YN-0wx"/>
+                            <constraint firstItem="iDZ-RQ-Fyo" firstAttribute="centerY" secondItem="MLP-g5-1l9" secondAttribute="centerY" id="WRp-hz-0d5"/>
                             <constraint firstItem="71s-U4-dC8" firstAttribute="top" secondItem="AcM-ce-T4D" secondAttribute="bottom" constant="8" symbolic="YES" id="Wq3-J3-UpA"/>
+                            <constraint firstItem="IgI-rr-4gI" firstAttribute="centerY" secondItem="4tu-N8-0PA" secondAttribute="centerY" id="YOA-2z-89L"/>
                             <constraint firstItem="ETa-HR-b2Z" firstAttribute="top" secondItem="SRk-g2-mPa" secondAttribute="bottom" constant="6" symbolic="YES" id="ZZt-GN-paE"/>
+                            <constraint firstItem="IgI-rr-4gI" firstAttribute="leading" secondItem="4tu-N8-0PA" secondAttribute="trailing" constant="8" symbolic="YES" id="cBU-UI-8mb"/>
+                            <constraint firstItem="iDZ-RQ-Fyo" firstAttribute="leading" secondItem="MLP-g5-1l9" secondAttribute="trailing" constant="8" symbolic="YES" id="ccB-Mo-jS5"/>
                             <constraint firstItem="l0a-QK-PNZ" firstAttribute="leading" secondItem="asf-5w-Z2U" secondAttribute="trailing" id="clk-bD-Vs7"/>
                             <constraint firstItem="ETa-HR-b2Z" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="crd-xd-Gj2"/>
                             <constraint firstItem="SRk-g2-mPa" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="duB-Vx-Ozi"/>
                             <constraint firstItem="asf-5w-Z2U" firstAttribute="centerY" secondItem="d91-rN-H4Z" secondAttribute="centerY" id="e6J-eW-hz3"/>
                             <constraint firstItem="AcM-ce-T4D" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="eKO-iZ-jfi"/>
                             <constraint firstItem="asf-5w-Z2U" firstAttribute="leading" secondItem="d91-rN-H4Z" secondAttribute="trailing" constant="8" symbolic="YES" id="f69-zN-jXg"/>
+                            <constraint firstItem="4tu-N8-0PA" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="h3m-fv-vhW"/>
                             <constraint firstItem="YNz-Bm-v4m" firstAttribute="centerY" secondItem="AcM-ce-T4D" secondAttribute="centerY" id="i45-7w-HR0"/>
                             <constraint firstItem="71s-U4-dC8" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="ia2-wI-JuM"/>
+                            <constraint firstItem="pBU-1C-sED" firstAttribute="top" secondItem="MLP-g5-1l9" secondAttribute="bottom" constant="8" symbolic="YES" id="izE-HF-Nzz"/>
                             <constraint firstItem="t2V-Mz-Mc2" firstAttribute="leading" secondItem="ETa-HR-b2Z" secondAttribute="trailing" constant="6" symbolic="YES" id="jUO-iw-IYw"/>
+                            <constraint firstItem="MLP-g5-1l9" firstAttribute="leading" secondItem="rwj-WE-Paf" secondAttribute="leading" constant="20" symbolic="YES" id="kXb-ca-txo"/>
                             <constraint firstItem="d91-rN-H4Z" firstAttribute="centerY" secondItem="71s-U4-dC8" secondAttribute="centerY" id="lC2-RC-IEo"/>
                             <constraint firstAttribute="bottom" secondItem="FSO-h1-fY8" secondAttribute="bottom" constant="20" symbolic="YES" id="lNI-JS-C5h"/>
                             <constraint firstItem="AcM-ce-T4D" firstAttribute="top" secondItem="ETa-HR-b2Z" secondAttribute="bottom" constant="8" symbolic="YES" id="laD-GV-4Lf"/>
@@ -1261,7 +1415,7 @@
         <!--Instructions-->
         <scene sceneID="9Jq-ee-YYN">
             <objects>
-                <viewController title="Instructions" id="vFB-aO-P3q" customClass="HelpScreenViewController" customModule="PsionicTimeMap_ImageProducer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Instructions" id="vFB-aO-P3q" customClass="HelpScreenViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="uSX-gO-cDw">
                         <rect key="frame" x="0.0" y="0.0" width="1064" height="681"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1362,7 +1516,7 @@
         <!--Info-->
         <scene sceneID="ccT-Vt-lcs">
             <objects>
-                <viewController title="Info" id="3pm-uT-8si" customClass="InfoScreenViewController" customModule="PsionicTimeMap_ImageProducer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Info" id="3pm-uT-8si" customClass="InfoScreenViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="29P-cu-BV9">
                         <rect key="frame" x="0.0" y="0.0" width="296" height="816"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1500,8 +1654,11 @@ Psionic Timestream Maps can be used with Image Classification ML Models to provi
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" width="659" height="241"/>
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_02" width="662" height="248"/>
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" width="662" height="248"/>
-        <image name="gearshape" catalog="system" width="32" height="32"/>
-        <image name="info.circle" catalog="system" width="32" height="32"/>
-        <image name="square.and.arrow.down.on.square" catalog="system" width="32" height="32"/>
+        <image name="gearshape" catalog="system" width="16" height="16"/>
+        <image name="info.circle" catalog="system" width="15" height="15"/>
+        <image name="location.fill.viewfinder" catalog="system" width="16" height="15"/>
+        <image name="magnifyingglass" catalog="system" width="16" height="15"/>
+        <image name="mappin.and.ellipse" catalog="system" width="15" height="16"/>
+        <image name="square.and.arrow.down.on.square" catalog="system" width="18" height="19"/>
     </resources>
 </document>

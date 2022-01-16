@@ -14,6 +14,7 @@
 		FA7C4C992793B16B006C9FE4 /* RGYBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */; };
 		FA7C4C9B2793B199006C9FE4 /* ColorRenderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */; };
 		FA7C4C9D2793B1EE006C9FE4 /* PsionicImageStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */; };
+		FA7C4C9F2794A87C006C9FE4 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */; };
 		FA886FDF278B551900AC3A30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FDE278B551900AC3A30 /* Constants.swift */; };
 		FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */; };
 		FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE2278D4CF600AC3A30 /* View+Extension.swift */; };
@@ -56,6 +57,7 @@
 		FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGYBColor.swift; sourceTree = "<group>"; };
 		FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRenderMode.swift; sourceTree = "<group>"; };
 		FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicImageStrip.swift; sourceTree = "<group>"; };
+		FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		FA886FDE278B551900AC3A30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		FA886FE2278D4CF600AC3A30 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				FA7C4C9027934902006C9FE4 /* NSTextField+Extensions.swift */,
 				FA7C4C92279393D7006C9FE4 /* HelpScreenViewController.swift */,
 				FA7C4C9427939B91006C9FE4 /* InfoScreenViewController.swift */,
+				FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */,
 				FA7C4C962793B12E006C9FE4 /* NSImage+Extension.swift */,
 				FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */,
 				FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */,
@@ -309,6 +312,7 @@
 				FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */,
 				FA8CADD324FDC23F00BD32E7 /* PsionicImageGenerator.swift in Sources */,
 				FA8CADCF24FD86CC00BD32E7 /* PsionicDataParser.swift in Sources */,
+				FA7C4C9F2794A87C006C9FE4 /* SelectLocationViewController.swift in Sources */,
 				FAD174CA253104E600F6711E /* String+Extension.swift in Sources */,
 				FA7C4C9B2793B199006C9FE4 /* ColorRenderMode.swift in Sources */,
 				FA7C4C972793B12E006C9FE4 /* NSImage+Extension.swift in Sources */,
