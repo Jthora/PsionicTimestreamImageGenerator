@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,11 +11,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="PsionicTimeMap_ImageProducer" id="1Xt-HY-uBw">
+                            <menuItem title="PsionicTimestreamImageGenerator" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="PsionicTimeMap_ImageProducer" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="PsionicTimestreamImageGenerator" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About PsionicTimeMap_ImageProducer" id="5kV-Vb-QxS">
+                                        <menuItem title="About PsionicTimestreamImageGenerator" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -30,7 +29,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide PsionicTimeMap_ImageProducer" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide PsionicTimestreamImageGenerator" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -48,7 +47,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit PsionicTimeMap_ImageProducer" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit PsionicTimestreamImageGenerator" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -661,7 +660,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="PsionicTimeMap_ImageProducer Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="PsionicTimestreamImageGenerator Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -866,7 +865,7 @@
                                     <constraint firstAttribute="height" constant="18" id="pHw-pn-Eez"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="right" title="2" drawsBackground="YES" id="pat-QJ-e4O">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -881,7 +880,7 @@
                                     <constraint firstAttribute="height" constant="18" id="ZEW-1P-4bb"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="right" title="1" drawsBackground="YES" id="HJs-31-2Ab">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -950,7 +949,7 @@
                                 <rect key="frame" x="388" y="138" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="755-Cd-pDB">
-                                <rect key="frame" x="579" y="170.5" width="23" height="23"/>
+                                <rect key="frame" x="570" y="166" width="32" height="32"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="info.circle" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pPR-s0-RLf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="20"/>
@@ -976,7 +975,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-wa-MMJ">
-                                <rect key="frame" x="548" y="170" width="23" height="23.5"/>
+                                <rect key="frame" x="530" y="166" width="32" height="32"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="gearshape" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="BmU-Hx-aj9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -1002,7 +1001,7 @@
                                     <constraint firstAttribute="width" constant="128" id="ljb-jy-6uQ"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Ready" id="GtO-iD-axL">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1187,7 +1186,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t2V-Mz-Mc2">
                                 <rect key="frame" x="296" y="243" width="78" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Coming Soon!" id="AQR-qd-j2V">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1382,7 +1381,7 @@
                                     <constraint firstAttribute="width" constant="256" id="OLa-3H-VFu"/>
                                 </constraints>
                                 <textFieldCell key="cell" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Hw0-ju-V8N">
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <string key="title">
 This software is designed to parse
 an 'Ephemeris' database containing:
@@ -1410,8 +1409,8 @@ Predicting the Future!
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qI-nm-Euu">
                                 <rect key="frame" x="20" y="116" width="256" height="340"/>
                                 <textFieldCell key="cell" borderStyle="border" alignment="center" drawsBackground="YES" id="wKi-P9-f2e">
-                                    <font key="font" metaFont="system" size="11"/>
-                                    <mutableString key="title">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">
 Software uses Base 4 Color Chroma which represents natural elemental color codes:
 
 RGYB = Red Green Yellow Blue
@@ -1427,7 +1426,7 @@ PNG Image (1px height, #days width)
 Merging multiple PNG image strips together can be used to create visualizations of the planetary harmonics such by showing bright or dark spots in the color chroma.
 
 Psionic Timestream Maps can be used with Image Classification ML Models to provide AI with a new temporal reference for predicting events in the past, present and future.
-</mutableString>
+</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1501,8 +1500,8 @@ Psionic Timestream Maps can be used with Image Classification ML Models to provi
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" width="659" height="241"/>
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_02" width="662" height="248"/>
         <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" width="662" height="248"/>
-        <image name="gearshape" catalog="system" width="16" height="16"/>
-        <image name="info.circle" catalog="system" width="15" height="15"/>
-        <image name="square.and.arrow.down.on.square" catalog="system" width="18" height="19"/>
+        <image name="gearshape" catalog="system" width="32" height="32"/>
+        <image name="info.circle" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.down.on.square" catalog="system" width="32" height="32"/>
     </resources>
 </document>

@@ -59,17 +59,17 @@
 		FA886FDE278B551900AC3A30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		FA886FE2278D4CF600AC3A30 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
-		FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsionicTimeMap_ImageProducer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CAD9D24FD864B00BD32E7 /* PsionicTimestreamImageGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsionicTimestreamImageGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8CADA224FD864B00BD32E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA8CADA424FD865300BD32E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8CADA724FD865300BD32E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA8CADA924FD865300BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8CADAA24FD865300BD32E7 /* PsionicTimeMap_ImageProducer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PsionicTimeMap_ImageProducer.entitlements; sourceTree = "<group>"; };
-		FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimeMap_ImageProducerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CADAF24FD865400BD32E7 /* PsionicTimestreamImageGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimestreamImageGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicTimeMap_ImageProducerTests.swift; sourceTree = "<group>"; };
 		FA8CADB524FD865400BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimeMap_ImageProducerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8CADBA24FD865400BD32E7 /* PsionicTimestreamImageGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimestreamImageGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicTimeMap_ImageProducerUITests.swift; sourceTree = "<group>"; };
 		FA8CADC024FD865400BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8CADCE24FD86CC00BD32E7 /* PsionicDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicDataParser.swift; sourceTree = "<group>"; };
@@ -118,9 +118,9 @@
 		FA8CAD9E24FD864B00BD32E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */,
-				FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */,
-				FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */,
+				FA8CAD9D24FD864B00BD32E7 /* PsionicTimestreamImageGenerator.app */,
+				FA8CADAF24FD865400BD32E7 /* PsionicTimestreamImageGeneratorTests.xctest */,
+				FA8CADBA24FD865400BD32E7 /* PsionicTimestreamImageGeneratorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */ = {
+		FA8CAD9C24FD864B00BD32E7 /* PsionicTimestreamImageGenerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducer" */;
+			buildConfigurationList = FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGenerator" */;
 			buildPhases = (
 				FA8CAD9924FD864B00BD32E7 /* Sources */,
 				FA8CAD9A24FD864B00BD32E7 /* Frameworks */,
@@ -187,14 +187,14 @@
 			);
 			dependencies = (
 			);
-			name = PsionicTimeMap_ImageProducer;
+			name = PsionicTimestreamImageGenerator;
 			productName = PsionicTimeMap_ImageProducer;
-			productReference = FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */;
+			productReference = FA8CAD9D24FD864B00BD32E7 /* PsionicTimestreamImageGenerator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA8CADAE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */ = {
+		FA8CADAE24FD865400BD32E7 /* PsionicTimestreamImageGeneratorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerTests" */;
+			buildConfigurationList = FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGeneratorTests" */;
 			buildPhases = (
 				FA8CADAB24FD865400BD32E7 /* Sources */,
 				FA8CADAC24FD865400BD32E7 /* Frameworks */,
@@ -205,14 +205,14 @@
 			dependencies = (
 				FA8CADB124FD865400BD32E7 /* PBXTargetDependency */,
 			);
-			name = PsionicTimeMap_ImageProducerTests;
+			name = PsionicTimestreamImageGeneratorTests;
 			productName = PsionicTimeMap_ImageProducerTests;
-			productReference = FA8CADAF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.xctest */;
+			productReference = FA8CADAF24FD865400BD32E7 /* PsionicTimestreamImageGeneratorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FA8CADB924FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */ = {
+		FA8CADB924FD865400BD32E7 /* PsionicTimestreamImageGeneratorUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerUITests" */;
+			buildConfigurationList = FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGeneratorUITests" */;
 			buildPhases = (
 				FA8CADB624FD865400BD32E7 /* Sources */,
 				FA8CADB724FD865400BD32E7 /* Frameworks */,
@@ -223,9 +223,9 @@
 			dependencies = (
 				FA8CADBC24FD865400BD32E7 /* PBXTargetDependency */,
 			);
-			name = PsionicTimeMap_ImageProducerUITests;
+			name = PsionicTimestreamImageGeneratorUITests;
 			productName = PsionicTimeMap_ImageProducerUITests;
-			productReference = FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */;
+			productReference = FA8CADBA24FD865400BD32E7 /* PsionicTimestreamImageGeneratorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -251,7 +251,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimeMap_ImageProducer" */;
+			buildConfigurationList = FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimestreamImageGenerator" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -264,9 +264,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */,
-				FA8CADAE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */,
-				FA8CADB924FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */,
+				FA8CAD9C24FD864B00BD32E7 /* PsionicTimestreamImageGenerator */,
+				FA8CADAE24FD865400BD32E7 /* PsionicTimestreamImageGeneratorTests */,
+				FA8CADB924FD865400BD32E7 /* PsionicTimestreamImageGeneratorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -344,12 +344,12 @@
 /* Begin PBXTargetDependency section */
 		FA8CADB124FD865400BD32E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */;
+			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimestreamImageGenerator */;
 			targetProxy = FA8CADB024FD865400BD32E7 /* PBXContainerItemProxy */;
 		};
 		FA8CADBC24FD865400BD32E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */;
+			target = FA8CAD9C24FD864B00BD32E7 /* PsionicTimestreamImageGenerator */;
 			targetProxy = FA8CADBB24FD865400BD32E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -541,7 +541,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimeMap_ImageProducer.app/Contents/MacOS/PsionicTimeMap_ImageProducer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimestreamImageGenerator.app/Contents/MacOS/PsionicTimestreamImageGenerator";
 			};
 			name = Debug;
 		};
@@ -563,7 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimeMap_ImageProducer.app/Contents/MacOS/PsionicTimeMap_ImageProducer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PsionicTimestreamImageGenerator.app/Contents/MacOS/PsionicTimestreamImageGenerator";
 			};
 			name = Release;
 		};
@@ -610,7 +610,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimeMap_ImageProducer" */ = {
+		FA8CAD9824FD864B00BD32E7 /* Build configuration list for PBXProject "PsionicTimestreamImageGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA8CADC124FD865400BD32E7 /* Debug */,
@@ -619,7 +619,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducer" */ = {
+		FA8CADC324FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA8CADC424FD865400BD32E7 /* Debug */,
@@ -628,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerTests" */ = {
+		FA8CADC624FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGeneratorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA8CADC724FD865400BD32E7 /* Debug */,
@@ -637,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimeMap_ImageProducerUITests" */ = {
+		FA8CADC924FD865400BD32E7 /* Build configuration list for PBXNativeTarget "PsionicTimestreamImageGeneratorUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA8CADCA24FD865400BD32E7 /* Debug */,
