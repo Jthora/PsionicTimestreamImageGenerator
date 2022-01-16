@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "PsionicTimestreamImageGenerator_HelpScreen_thumbnail_02.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

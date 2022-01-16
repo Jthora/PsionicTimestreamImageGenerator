@@ -7,12 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA7C4C9127934902006C9FE4 /* NSTextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9027934902006C9FE4 /* NSTextField+Extensions.swift */; };
+		FA7C4C93279393D7006C9FE4 /* HelpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C92279393D7006C9FE4 /* HelpScreenViewController.swift */; };
+		FA7C4C9527939B91006C9FE4 /* InfoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9427939B91006C9FE4 /* InfoScreenViewController.swift */; };
+		FA7C4C972793B12E006C9FE4 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C962793B12E006C9FE4 /* NSImage+Extension.swift */; };
+		FA7C4C992793B16B006C9FE4 /* RGYBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */; };
+		FA7C4C9B2793B199006C9FE4 /* ColorRenderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */; };
+		FA7C4C9D2793B1EE006C9FE4 /* PsionicImageStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */; };
+		FA886FDF278B551900AC3A30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FDE278B551900AC3A30 /* Constants.swift */; };
+		FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */; };
+		FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE2278D4CF600AC3A30 /* View+Extension.swift */; };
 		FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */; };
 		FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA224FD864B00BD32E7 /* ViewController.swift */; };
 		FA8CADA524FD865300BD32E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA424FD865300BD32E7 /* Assets.xcassets */; };
 		FA8CADA824FD865300BD32E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA624FD865300BD32E7 /* Main.storyboard */; };
 		FA8CADB424FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */; };
 		FA8CADBF24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */; };
+		FA8CADCF24FD86CC00BD32E7 /* PsionicDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADCE24FD86CC00BD32E7 /* PsionicDataParser.swift */; };
+		FA8CADD124FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADD024FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt */; };
+		FA8CADD324FDC23F00BD32E7 /* PsionicImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADD224FDC23F00BD32E7 /* PsionicImageGenerator.swift */; };
+		FA9A6EA22531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA9A6EA12531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt */; };
+		FAD174CA253104E600F6711E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD174C9253104E600F6711E /* String+Extension.swift */; };
+		FAD174CF25311FCC00F6711E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD174CE25311FCC00F6711E /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA7C4C9027934902006C9FE4 /* NSTextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extensions.swift"; sourceTree = "<group>"; };
+		FA7C4C92279393D7006C9FE4 /* HelpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreenViewController.swift; sourceTree = "<group>"; };
+		FA7C4C9427939B91006C9FE4 /* InfoScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenViewController.swift; sourceTree = "<group>"; };
+		FA7C4C962793B12E006C9FE4 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
+		FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGYBColor.swift; sourceTree = "<group>"; };
+		FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRenderMode.swift; sourceTree = "<group>"; };
+		FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicImageStrip.swift; sourceTree = "<group>"; };
+		FA886FDE278B551900AC3A30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
+		FA886FE2278D4CF600AC3A30 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		FA8CAD9D24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsionicTimeMap_ImageProducer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8CADA224FD864B00BD32E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +72,12 @@
 		FA8CADBA24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionicTimeMap_ImageProducerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADBE24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicTimeMap_ImageProducerUITests.swift; sourceTree = "<group>"; };
 		FA8CADC024FD865400BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8CADCE24FD86CC00BD32E7 /* PsionicDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicDataParser.swift; sourceTree = "<group>"; };
+		FA8CADD024FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt"; path = "Data/SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt"; sourceTree = SOURCE_ROOT; };
+		FA8CADD224FDC23F00BD32E7 /* PsionicImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicImageGenerator.swift; sourceTree = "<group>"; };
+		FA9A6EA12531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "SiderealVedicEphemeris_GalacticCenter_1978-2062.txt"; path = "Data/SiderealVedicEphemeris_GalacticCenter_1978-2062.txt"; sourceTree = SOURCE_ROOT; };
+		FAD174C9253104E600F6711E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		FAD174CE25311FCC00F6711E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,12 +128,28 @@
 		FA8CAD9F24FD864B00BD32E7 /* PsionicTimeMap_ImageProducer */ = {
 			isa = PBXGroup;
 			children = (
+				FA9A6EA12531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt */,
+				FA8CADD024FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt */,
 				FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */,
 				FA8CADA224FD864B00BD32E7 /* ViewController.swift */,
 				FA8CADA424FD865300BD32E7 /* Assets.xcassets */,
 				FA8CADA624FD865300BD32E7 /* Main.storyboard */,
 				FA8CADA924FD865300BD32E7 /* Info.plist */,
 				FA8CADAA24FD865300BD32E7 /* PsionicTimeMap_ImageProducer.entitlements */,
+				FA8CADCE24FD86CC00BD32E7 /* PsionicDataParser.swift */,
+				FA8CADD224FDC23F00BD32E7 /* PsionicImageGenerator.swift */,
+				FAD174C9253104E600F6711E /* String+Extension.swift */,
+				FAD174CE25311FCC00F6711E /* Date+Extension.swift */,
+				FA886FDE278B551900AC3A30 /* Constants.swift */,
+				FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */,
+				FA886FE2278D4CF600AC3A30 /* View+Extension.swift */,
+				FA7C4C9027934902006C9FE4 /* NSTextField+Extensions.swift */,
+				FA7C4C92279393D7006C9FE4 /* HelpScreenViewController.swift */,
+				FA7C4C9427939B91006C9FE4 /* InfoScreenViewController.swift */,
+				FA7C4C962793B12E006C9FE4 /* NSImage+Extension.swift */,
+				FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */,
+				FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */,
+				FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */,
 			);
 			path = PsionicTimeMap_ImageProducer;
 			sourceTree = "<group>";
@@ -187,7 +235,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Jordan Trana";
 				TargetAttributes = {
 					FA8CAD9C24FD864B00BD32E7 = {
@@ -229,6 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8CADA524FD865300BD32E7 /* Assets.xcassets in Resources */,
+				FA8CADD124FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt in Resources */,
+				FA9A6EA22531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt in Resources */,
 				FA8CADA824FD865300BD32E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,8 +304,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */,
+				FA7C4C992793B16B006C9FE4 /* RGYBColor.swift in Sources */,
 				FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */,
+				FA8CADD324FDC23F00BD32E7 /* PsionicImageGenerator.swift in Sources */,
+				FA8CADCF24FD86CC00BD32E7 /* PsionicDataParser.swift in Sources */,
+				FAD174CA253104E600F6711E /* String+Extension.swift in Sources */,
+				FA7C4C9B2793B199006C9FE4 /* ColorRenderMode.swift in Sources */,
+				FA7C4C972793B12E006C9FE4 /* NSImage+Extension.swift in Sources */,
+				FA7C4C93279393D7006C9FE4 /* HelpScreenViewController.swift in Sources */,
+				FA886FDF278B551900AC3A30 /* Constants.swift in Sources */,
 				FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */,
+				FA7C4C9527939B91006C9FE4 /* InfoScreenViewController.swift in Sources */,
+				FA7C4C9D2793B1EE006C9FE4 /* PsionicImageStrip.swift in Sources */,
+				FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */,
+				FA7C4C9127934902006C9FE4 /* NSTextField+Extensions.swift in Sources */,
+				FAD174CF25311FCC00F6711E /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +392,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -388,6 +453,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -420,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H4H7UN3F3K;
@@ -440,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H4H7UN3F3K;
