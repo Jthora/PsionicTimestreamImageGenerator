@@ -80,7 +80,6 @@ class ViewController: NSViewController {
                 // Filename Prefix
                 filenamePrefix.isEnabled = false
                 
-                
             case .parsing:
                 // Parse and Reset
                 parsingLabel.isHidden = false
@@ -193,11 +192,14 @@ class ViewController: NSViewController {
     // Parse Ephemeris Data (galactic centered - sidereal astrology - planetary positions) [Galactic Centered Only!]
     @IBAction func parseDataButtonPressed(_ sender: Any) {
         
+        // Set UI
+        uiState = .parsing
+        
         // Set Date Range
         EphemerisDataParser.main.startDate = startDatePicker.dateValue
         EphemerisDataParser.main.endDate = endDatePicker.dateValue
         
-        // Load Database File
+        // Load Ephemeris Database File (use Galactic Centered Sidereal Ayanamsa)
         EphemerisDataParser.main.loadFile()
         
         // Parse Loaded Database File
@@ -206,14 +208,11 @@ class ViewController: NSViewController {
                 DispatchQueue.main.async {
                     // Set Percent Complete (0 to 1)
                     self?.parseProgressIndicator.doubleValue = percentComplete
-                    self?.uiState = .parsing
                 }
             } onComplete: { [weak self] in
                 DispatchQueue.main.async {
                     // Set to Full
                     self?.uiState = .parsed
-                    
-                    //self?.filenamePrefix.isEnabled = true
                 }
             }
         }
