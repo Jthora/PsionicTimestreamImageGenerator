@@ -62,10 +62,11 @@ class SelectLocationViewController: NSViewController {
         // Map View Delegate
         mapView.delegate = self
         
+        
         // Set Map Viewport Center
         mapView.setCenter(selectedCoordinate, animated: false)
         
-        // Setup Mouseclick Callback
+        // MapView Mouseclick Coordinate Callback
         mapView.selectedLocationCallback = { [weak self] coordinate in
             print("selectedLocationCallback")
             guard let strongSelf = self else {return}
@@ -76,8 +77,10 @@ class SelectLocationViewController: NSViewController {
                 strongSelf.mapView.addAnnotation(strongSelf.mouseclickAnnotation)
             }
             
-            self?.mouseclickAnnotation.coordinate = coordinate
-            self?.updateUI()
+            strongSelf.mapView.selectAnnotation(strongSelf.mouseclickAnnotation, animated: true)
+            
+            strongSelf.mouseclickAnnotation.coordinate = coordinate
+            strongSelf.updateUI()
         }
     }
     
@@ -123,7 +126,6 @@ class SelectLocationViewController: NSViewController {
                 } else {
                     self.nameTextField.stringValue = "Pinned Location"
                 }
-                
             case .unset:
                 self.nameTextField.stringValue = "Default Coordinates"
             }
@@ -139,6 +141,9 @@ class SelectLocationViewController: NSViewController {
         let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         let viewRegion = MKCoordinateRegion(center: selectedCoordinate, span: span)
         
+        // Bounding Region
+        var boundingRegion: MKCoordinateRegion? = nil
+        
         // POI Requests
         let poiRequest = MKLocalSearch.Request()
         poiRequest.naturalLanguageQuery = naturalLanguageQuery
@@ -151,9 +156,12 @@ class SelectLocationViewController: NSViewController {
             if let response = response {
                 print("POI Search Response: response.mapItems.count \(response.mapItems.count)")
                 self?.addNewPOIs(response.mapItems)
+                
+                self?.mapView.setRegion(response.boundingRegion , animated: true)
             }
             if let error = error {
                 print(error)
+                print("POI Search Response: ERROR \(error.localizedDescription)")
             }
         }
         
@@ -169,11 +177,13 @@ class SelectLocationViewController: NSViewController {
             if let response = response {
                 print("Address Search Response: response.mapItems.count \(response.mapItems.count)")
                 self?.addNewAddresses(response.mapItems)
+                
             }
             if let error = error {
-                print(error)
+                print("Address Search Response: ERROR \(error.localizedDescription)")
             }
         }
+        
     }
     
     // POI Map Annotations
