@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA8CAD9C24FD864B00BD32E7"
-               BuildableName = "PsionicTimestreamImageGenerator.app"
+               BuildableName = "Psionic Timestream Image Generator.app"
                BlueprintName = "Psionic Timestream Image Generator"
                ReferencedContainer = "container:Psionic Timestream Image Generator.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA8CADAE24FD865400BD32E7"
-               BuildableName = "PsionicTimestreamImageGeneratorTests.xctest"
+               BuildableName = "Psionic Timestream Image GeneratorTests.xctest"
                BlueprintName = "Psionic Timestream Image GeneratorTests"
                ReferencedContainer = "container:Psionic Timestream Image Generator.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA8CADB924FD865400BD32E7"
-               BuildableName = "PsionicTimestreamImageGeneratorUITests.xctest"
+               BuildableName = "Psionic Timestream Image GeneratorUITests.xctest"
                BlueprintName = "Psionic Timestream Image GeneratorUITests"
                ReferencedContainer = "container:Psionic Timestream Image Generator.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA8CAD9C24FD864B00BD32E7"
-            BuildableName = "PsionicTimestreamImageGenerator.app"
+            BuildableName = "Psionic Timestream Image Generator.app"
             BlueprintName = "Psionic Timestream Image Generator"
             ReferencedContainer = "container:Psionic Timestream Image Generator.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA8CAD9C24FD864B00BD32E7"
-            BuildableName = "PsionicTimestreamImageGenerator.app"
+            BuildableName = "Psionic Timestream Image Generator.app"
             BlueprintName = "Psionic Timestream Image Generator"
             ReferencedContainer = "container:Psionic Timestream Image Generator.xcodeproj">
          </BuildableReference>

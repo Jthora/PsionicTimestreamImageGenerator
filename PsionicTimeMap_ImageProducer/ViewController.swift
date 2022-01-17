@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class MainViewController: NSViewController {
     
     // Marking Settings
     @IBOutlet weak var checkboxMarkYears: NSButton!

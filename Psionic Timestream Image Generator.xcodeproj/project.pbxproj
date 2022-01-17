@@ -15,6 +15,10 @@
 		FA7C4C9B2793B199006C9FE4 /* ColorRenderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */; };
 		FA7C4C9D2793B1EE006C9FE4 /* PsionicImageStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */; };
 		FA7C4C9F2794A87C006C9FE4 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */; };
+		FA7C4CA12794B942006C9FE4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4CA02794B942006C9FE4 /* SettingsViewController.swift */; };
+		FA7C4CA3279506F2006C9FE4 /* LocationSelectMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4CA2279506F2006C9FE4 /* LocationSelectMKMapView.swift */; };
+		FA7C4CA527950C6B006C9FE4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C4CA427950C6B006C9FE4 /* Settings.swift */; };
+		FA7C4CA8279514C5006C9FE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7C4CA7279514C5006C9FE4 /* MapKit.framework */; };
 		FA886FDF278B551900AC3A30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FDE278B551900AC3A30 /* Constants.swift */; };
 		FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */; };
 		FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE2278D4CF600AC3A30 /* View+Extension.swift */; };
@@ -58,6 +62,10 @@
 		FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRenderMode.swift; sourceTree = "<group>"; };
 		FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsionicImageStrip.swift; sourceTree = "<group>"; };
 		FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		FA7C4CA02794B942006C9FE4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FA7C4CA2279506F2006C9FE4 /* LocationSelectMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectMKMapView.swift; sourceTree = "<group>"; };
+		FA7C4CA427950C6B006C9FE4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FA7C4CA7279514C5006C9FE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA886FDE278B551900AC3A30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		FA886FE2278D4CF600AC3A30 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -87,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C4CA8279514C5006C9FE4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA7C4CA6279514C5006C9FE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA7C4CA7279514C5006C9FE4 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA8CAD9424FD864B00BD32E7 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +131,7 @@
 				FA8CADB224FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests */,
 				FA8CADBD24FD865400BD32E7 /* PsionicTimeMap_ImageProducerUITests */,
 				FA8CAD9E24FD864B00BD32E7 /* Products */,
+				FA7C4CA6279514C5006C9FE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,10 +167,13 @@
 				FA7C4C92279393D7006C9FE4 /* HelpScreenViewController.swift */,
 				FA7C4C9427939B91006C9FE4 /* InfoScreenViewController.swift */,
 				FA7C4C9E2794A87C006C9FE4 /* SelectLocationViewController.swift */,
+				FA7C4CA02794B942006C9FE4 /* SettingsViewController.swift */,
 				FA7C4C962793B12E006C9FE4 /* NSImage+Extension.swift */,
 				FA7C4C982793B16B006C9FE4 /* RGYBColor.swift */,
 				FA7C4C9A2793B199006C9FE4 /* ColorRenderMode.swift */,
 				FA7C4C9C2793B1EE006C9FE4 /* PsionicImageStrip.swift */,
+				FA7C4CA2279506F2006C9FE4 /* LocationSelectMKMapView.swift */,
+				FA7C4CA427950C6B006C9FE4 /* Settings.swift */,
 			);
 			path = PsionicTimeMap_ImageProducer;
 			sourceTree = "<group>";
@@ -321,9 +342,12 @@
 				FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */,
 				FA7C4C9527939B91006C9FE4 /* InfoScreenViewController.swift in Sources */,
 				FA7C4C9D2793B1EE006C9FE4 /* PsionicImageStrip.swift in Sources */,
+				FA7C4CA527950C6B006C9FE4 /* Settings.swift in Sources */,
 				FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */,
+				FA7C4CA3279506F2006C9FE4 /* LocationSelectMKMapView.swift in Sources */,
 				FA7C4C9127934902006C9FE4 /* NSTextField+Extensions.swift in Sources */,
 				FAD174CF25311FCC00F6711E /* Date+Extension.swift in Sources */,
+				FA7C4CA12794B942006C9FE4 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H4H7UN3F3K;
@@ -511,7 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PsionicTimeMap_ImageProducer/PsionicTimeMap_ImageProducer.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H4H7UN3F3K;

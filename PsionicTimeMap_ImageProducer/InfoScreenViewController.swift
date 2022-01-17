@@ -8,10 +8,17 @@
 
 import Cocoa
 
-class InfoScreenViewController: ViewController {
+class InfoScreenViewController: NSViewController {
+    
+    @IBOutlet weak var versionLabel: NSTextField!
     
     override func viewDidLoad() {
         print("Info Screen Opened")
+        
+        let appBuildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "??"
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "??"
+        
+        versionLabel.stringValue = "Version: \(appVersion) [\(appBuildNumber)]"
     }
     
     @IBAction func thoraTechHyperlinkClicked(_ sender: NSButton) {

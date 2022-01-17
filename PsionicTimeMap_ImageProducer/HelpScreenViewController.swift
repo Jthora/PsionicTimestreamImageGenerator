@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class HelpScreenViewController: ViewController {
+class HelpScreenViewController: NSViewController {
     
     @IBOutlet weak var readyHelpScreenButton: NSButton!
     @IBOutlet weak var parsingHelpScreenButton: NSButton!
