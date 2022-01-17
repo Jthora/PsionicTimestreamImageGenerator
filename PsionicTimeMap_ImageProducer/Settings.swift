@@ -8,8 +8,26 @@
 
 import Foundation
 import MapKit
+import Combine
 
 struct Settings {
+    
+    // Sample Density
+    static var sampleDensity: Int? = nil
+    static let defaultSampleDensity: Int = 4096
+    static var sampleDensityString: String? {
+        return sampleDensity == nil ? nil : "\(sampleDensity! == 0 ? "" : "\(sampleDensity!)")"
+    }
+    
+    // Manual Latitude and Longitude
+    static var manualLongitude: CLLocationDegrees? = nil
+    static var manualLongitudeString: String? {
+        return manualLongitude == nil ? nil : "\(manualLongitude! == 0 ? "" : "\(manualLongitude!)")"
+    }
+    static var manualLatitude: CLLocationDegrees? = nil
+    static var manualLatitudeString: String? {
+        return manualLatitude == nil ? nil : "\(manualLatitude! == 0 ? "" : "\(manualLatitude!)")"
+    }
     
     // Parser Data Source
     static var parserDataSource: ParserDataSource = .database
@@ -44,8 +62,16 @@ struct Settings {
     static var selectedAnnotation: MKAnnotation? {
         return selectedAnnotationView?.annotation
     }
+    
+    // Map Coordinate, Longitude and Latitude
     static var mapCoordinate: CLLocationCoordinate2D? {
         return selectedAnnotation?.coordinate
+    }
+    static var mapLatitudeString: String? {
+        return mapCoordinate?.latitude == nil ? nil : "\(mapCoordinate!.latitude == 0 ? "" : "\(mapCoordinate!.latitude)")"
+    }
+    static var mapLongitudeString: String? {
+        return mapCoordinate?.longitude == nil ? nil : "\(mapCoordinate!.longitude == 0 ? "" : "\(mapCoordinate!.longitude)")"
     }
     
     // Manual Reset
@@ -53,10 +79,6 @@ struct Settings {
         manualLatitude = nil
         manualLongitude = nil
     }
-    
-    // Manual Latitude and Longitude
-    static var manualLongitude: CLLocationDegrees? = nil
-    static var manualLatitude: CLLocationDegrees? = nil
     
     // Manual Coordinate
     static var manualCoordinate: CLLocationCoordinate2D? {
@@ -69,4 +91,6 @@ struct Settings {
     
     // Default Coordinate
     static let defaultCoordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
+    
 }

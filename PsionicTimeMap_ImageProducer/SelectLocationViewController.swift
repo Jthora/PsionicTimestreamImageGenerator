@@ -62,6 +62,8 @@ class SelectLocationViewController: NSViewController {
         // Map View Delegate
         mapView.delegate = self
         
+        // 3D Globe - Hybrid
+        mapView.mapType = .hybridFlyover
         
         // Set Map Viewport Center
         mapView.setCenter(selectedCoordinate, animated: false)
@@ -285,12 +287,6 @@ extension SelectLocationViewController: MKMapViewDelegate {
         guard annotation is MKPointAnnotation else {
             return nil
         }
-        
-        // Mouse Click Annotation  is persistant
-        if annotation === mouseclickAnnotation,
-           let _ = mapView.dequeueReusableAnnotationView(withIdentifier: mouseclickAnnotationReuseIdentifier) {
-            return mouseclickAnnotationView
-        }
 
         // Reuse Standard Annotations
         let identifier = "standardAnnotationIdentifier"
@@ -302,11 +298,16 @@ extension SelectLocationViewController: MKMapViewDelegate {
         // Create New Standard Annotations
         let annotationView: MKAnnotationView
         if #available(macOS 11.0, *) {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            if annotation.subtitle != nil && annotation.subtitle??.count ?? 0 > 0 {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            }
         } else {
             // Fallback on earlier versions
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         }
+        
         annotationView.canShowCallout = true
         annotationView.annotation = annotation
         return annotationView

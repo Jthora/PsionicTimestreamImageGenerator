@@ -156,7 +156,7 @@ class MainViewController: NSViewController {
         // ToolTips
         settingsButton.toolTip = "Settings"
         infoButton.toolTip = "Info"
-        helpButton.toolTip = "Help"
+        helpButton.toolTip = "Instructions"
         
         
         // Clear Popup Lists
