@@ -8,9 +8,14 @@
 
 import Foundation
 
+typealias EphemerisDataParserOnStepCallback = ((Double)->Void)
+typealias EphemerisDataParserOnCompleteCallback = (()->Void)
+
 class EphemerisDataParser {
     
     static let main:EphemerisDataParser = EphemerisDataParser()
+    
+    let useDateRange:Bool = true
     
     let defaultFileName:String = "SiderealVedicEphemeris_GalacticCenter_1978-2062"
     let defaultFileType:String = ".txt"
@@ -18,9 +23,36 @@ class EphemerisDataParser {
     var fileContent:String? = nil
     var dataContent:[Planet:[PlanetState]] = [Planet:[PlanetState]]()
     
-    var useDateRange:Bool = false
     var startDate:Date? = nil
     var endDate:Date? = nil
+    
+    // Parse
+    func parse(from startDate:Date? = nil, // Start Date
+               to endDate:Date? = nil, // End Date
+               filename:String? = nil, // Ephemeris Filename
+               fileType:String? = nil, // Ephemeris Filetype
+               onStep:EphemerisDataParserOnStepCallback? = nil, // Callback for each Entry Parsed
+               onComplete:EphemerisDataParserOnCompleteCallback? = nil) { // Callback indicating Parser is Done
+        
+        DispatchQueue.global().async {
+            // Set Date Range
+            self.startDate = startDate
+            self.endDate = endDate
+            
+            // Load Specific File
+            self.loadFile(filename, customFileType: fileType)
+            
+            // Parse Content of Loaded File for Set Date Range
+            self.parseContent(onStep: onStep, onComplete: onComplete)
+        }
+    }
+    
+    func resetParser() {
+        fileContent = nil
+        dataContent = [Planet:[PlanetState]]()
+        startDate = nil
+        endDate = nil
+    }
     
     func loadFile(_ customFileName:String? = nil, customFileType:String? = nil) {
         let fileName:String = customFileName ?? defaultFileName
@@ -69,10 +101,6 @@ class EphemerisDataParser {
                 print("ERROR: row[\(rowIndex)] is empty")
                 continue
             }
-            
-            // Callback onStep (with Percentage Completed)
-            let percentageComplete = Double(rowIndex) / Double(rows.count)
-            onStep?(percentageComplete)
             
             // Year
             if row.count == 4 && row.isNumber && !row.contains(","),
@@ -157,10 +185,15 @@ class EphemerisDataParser {
                     let diff = date.timeIntervalSince(endDate)
                     if diff > 0 {
                         print("Entries Parsed: \(dataContent[.sun]?.count ?? -1)")
+                        onComplete?()
                         return
                     }
                 }
             }
+            
+            // Callback onStep (with Percentage Completed)
+            let percentageComplete = Double(rowIndex) / Double(rows.count)
+            onStep?(percentageComplete)
             
             // Astrology Entries per Planet
             for (columnIndex,column) in columns.enumerated() {

@@ -261,7 +261,7 @@
                                     <constraint firstAttribute="width" constant="300" id="VPa-KM-Nyb"/>
                                     <constraint firstAttribute="height" constant="21" id="e7K-PE-824"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="psionicImageStrip" drawsBackground="YES" id="Nvf-uJ-QE5">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="timestreamImageStrip" drawsBackground="YES" id="Nvf-uJ-QE5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

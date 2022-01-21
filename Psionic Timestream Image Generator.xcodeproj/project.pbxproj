@@ -26,7 +26,7 @@
 		FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE0278D4C6100AC3A30 /* TextFieldAlert.swift */; };
 		FA886FE3278D4CF600AC3A30 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA886FE2278D4CF600AC3A30 /* View+Extension.swift */; };
 		FA8CADA124FD864B00BD32E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */; };
-		FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA224FD864B00BD32E7 /* ViewController.swift */; };
+		FA8CADA324FD864B00BD32E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADA224FD864B00BD32E7 /* MainViewController.swift */; };
 		FA8CADA524FD865300BD32E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA424FD865300BD32E7 /* Assets.xcassets */; };
 		FA8CADA824FD865300BD32E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8CADA624FD865300BD32E7 /* Main.storyboard */; };
 		FA8CADB424FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CADB324FD865400BD32E7 /* PsionicTimeMap_ImageProducerTests.swift */; };
@@ -82,7 +82,7 @@
 		FA886FE2278D4CF600AC3A30 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		FA8CAD9D24FD864B00BD32E7 /* Psionic Timestream Image Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Psionic Timestream Image Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA8CADA224FD864B00BD32E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA8CADA224FD864B00BD32E7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA8CADA424FD865300BD32E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8CADA724FD865300BD32E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA8CADA924FD865300BD32E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 				FA9A6EA12531033C00F3F63E /* SiderealVedicEphemeris_GalacticCenter_1978-2062.txt */,
 				FA8CADD024FD980000BD32E7 /* SiderealVedicEphemeris_GalacticCenter_1978-2062_Parse-base360.txt */,
 				FA8CADA024FD864B00BD32E7 /* AppDelegate.swift */,
-				FA8CADA224FD864B00BD32E7 /* ViewController.swift */,
+				FA8CADA224FD864B00BD32E7 /* MainViewController.swift */,
 				FA8CADA424FD865300BD32E7 /* Assets.xcassets */,
 				FA8CADA624FD865300BD32E7 /* Main.storyboard */,
 				FA8CADA924FD865300BD32E7 /* Info.plist */,
@@ -434,7 +434,7 @@
 			files = (
 				FA886FE1278D4C6100AC3A30 /* TextFieldAlert.swift in Sources */,
 				FA7C4C992793B16B006C9FE4 /* RGYBColor.swift in Sources */,
-				FA8CADA324FD864B00BD32E7 /* ViewController.swift in Sources */,
+				FA8CADA324FD864B00BD32E7 /* MainViewController.swift in Sources */,
 				FA8CADD324FDC23F00BD32E7 /* PsionicImageGenerator.swift in Sources */,
 				FA8CADCF24FD86CC00BD32E7 /* PsionicDataParser.swift in Sources */,
 				FA7C4C9F2794A87C006C9FE4 /* SelectLocationViewController.swift in Sources */,
@@ -630,6 +630,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,6 +659,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "app.thora.-.PsionicTimeMap-ImageProducer";
 				PRODUCT_NAME = "$(TARGET_NAME)";

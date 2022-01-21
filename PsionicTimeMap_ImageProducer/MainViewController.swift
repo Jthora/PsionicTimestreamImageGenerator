@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  PsionicTimeMap_ImageProducer
 //
 //  Created by Jordan Trana on 8/31/20.
@@ -47,98 +47,100 @@ class MainViewController: NSViewController {
     // Current UI State
     var uiState: UIState = .notParsed {
         didSet {
-            switch uiState {
-            case .notParsed:
-                // Empty Progress Indicator
-                parseProgressIndicator.doubleValue = 0
-                
-                // Parse and Reset
-                parseDataButton.isEnabled = true
-                resetDataParserButton.isEnabled = false
-                
-                // Parsing Status
-                parsingLabel.isHidden = true
-                parsingLabel.stringValue = "Ready"
-                
-                // Options and Generate Button
-                popupList.isEnabled = false
-                popupRenderList.isEnabled = false
-                generateButton.isEnabled = false
-                
-                // Date Pickers
-                startDatePicker.isEnabled = true
-                endDatePicker.isEnabled = true
-                
-                // Markers
-                checkboxMarkMonths.isEnabled = false
-                markerMonthsStepper.isEnabled = false
-                markerMonthsTextField.isEnabled = false
-                checkboxMarkYears.isEnabled = false
-                markerYearsStepper.isEnabled = false
-                markerYearsTextField.isEnabled = false
-                
-                // Filename Prefix
-                filenamePrefix.isEnabled = false
-                
-            case .parsing:
-                // Parse and Reset
-                parsingLabel.isHidden = false
-                parseDataButton.isEnabled = false
-                resetDataParserButton.isEnabled = false
-                
-                // Parsing Status
-                parsingLabel.stringValue = "Parsing..."
-                
-                // Options and Generate Button
-                popupList.isEnabled = false
-                popupRenderList.isEnabled = false
-                generateButton.isEnabled = false
-                
-                // Date Pickers
-                startDatePicker.isEnabled = false
-                endDatePicker.isEnabled = false
-                
-                // Markers
-                checkboxMarkMonths.isEnabled = false
-                markerMonthsStepper.isEnabled = false
-                markerMonthsTextField.isEnabled = false
-                checkboxMarkYears.isEnabled = false
-                markerYearsStepper.isEnabled = false
-                markerYearsTextField.isEnabled = false
-                
-                // Filename Prefix
-                filenamePrefix.isEnabled = false
-                
-            case .parsed:
-                // Fill Progress Indicator
-                parseProgressIndicator.doubleValue = 1
-                
-                // Parse and Reset
-                parseDataButton.isEnabled = false
-                resetDataParserButton.isEnabled = true
-                
-                // Parsing Status
-                parsingLabel.stringValue = "Parsed"
-                
-                // Options and Generate Button
-                popupList.isEnabled = true
-                popupRenderList.isEnabled = true
-                generateButton.isEnabled = true
-                
-                // Date Pickers
-                startDatePicker.isEnabled = false
-                endDatePicker.isEnabled = false
-                
-                // Markers
-                checkboxMarkMonths.isEnabled = true
-                markerMonthsStepper.isEnabled = true
-                markerMonthsTextField.isEnabled = true
-                checkboxMarkYears.isEnabled = true
-                markerYearsStepper.isEnabled = true
-                markerYearsTextField.isEnabled = true
-                
-                // Filename Prefix
-                filenamePrefix.isEnabled = true
+            DispatchQueue.main.async {
+                switch self.uiState {
+                case .notParsed:
+                    // Empty Progress Indicator
+                    self.parseProgressIndicator.doubleValue = 0
+                    
+                    // Parse and Reset
+                    self.parseDataButton.isEnabled = true
+                    self.resetDataParserButton.isEnabled = false
+                    
+                    // Parsing Status
+                    self.parsingLabel.isHidden = true
+                    self.parsingLabel.stringValue = "Ready"
+                    
+                    // Options and Generate Button
+                    self.popupList.isEnabled = false
+                    self.popupRenderList.isEnabled = false
+                    self.generateButton.isEnabled = false
+                    
+                    // Date Pickers
+                    self.startDatePicker.isEnabled = true
+                    self.endDatePicker.isEnabled = true
+                    
+                    // Markers
+                    self.checkboxMarkMonths.isEnabled = false
+                    self.markerMonthsStepper.isEnabled = false
+                    self.markerMonthsTextField.isEnabled = false
+                    self.checkboxMarkYears.isEnabled = false
+                    self.markerYearsStepper.isEnabled = false
+                    self.markerYearsTextField.isEnabled = false
+                    
+                    // Filename Prefix
+                    self.filenamePrefix.isEnabled = false
+                    
+                case .parsing:
+                    // Parse and Reset
+                    self.parsingLabel.isHidden = false
+                    self.parseDataButton.isEnabled = false
+                    self.resetDataParserButton.isEnabled = false
+                    
+                    // Parsing Status
+                    self.parsingLabel.stringValue = "Parsing..."
+                    
+                    // Options and Generate Button
+                    self.popupList.isEnabled = false
+                    self.popupRenderList.isEnabled = false
+                    self.generateButton.isEnabled = false
+                    
+                    // Date Pickers
+                    self.startDatePicker.isEnabled = false
+                    self.endDatePicker.isEnabled = false
+                    
+                    // Markers
+                    self.checkboxMarkMonths.isEnabled = false
+                    self.markerMonthsStepper.isEnabled = false
+                    self.markerMonthsTextField.isEnabled = false
+                    self.checkboxMarkYears.isEnabled = false
+                    self.markerYearsStepper.isEnabled = false
+                    self.markerYearsTextField.isEnabled = false
+                    
+                    // Filename Prefix
+                    self.filenamePrefix.isEnabled = false
+                    
+                case .parsed:
+                    // Fill Progress Indicator
+                    self.parseProgressIndicator.doubleValue = 1
+                    
+                    // Parse and Reset
+                    self.parseDataButton.isEnabled = false
+                    self.resetDataParserButton.isEnabled = true
+                    
+                    // Parsing Status
+                    self.parsingLabel.stringValue = "Parsed"
+                    
+                    // Options and Generate Button
+                    self.popupList.isEnabled = true
+                    self.popupRenderList.isEnabled = true
+                    self.generateButton.isEnabled = true
+                    
+                    // Date Pickers
+                    self.startDatePicker.isEnabled = false
+                    self.endDatePicker.isEnabled = false
+                    
+                    // Markers
+                    self.checkboxMarkMonths.isEnabled = true
+                    self.markerMonthsStepper.isEnabled = true
+                    self.markerMonthsTextField.isEnabled = true
+                    self.checkboxMarkYears.isEnabled = true
+                    self.markerYearsStepper.isEnabled = true
+                    self.markerYearsTextField.isEnabled = true
+                    
+                    // Filename Prefix
+                    self.filenamePrefix.isEnabled = true
+                }
             }
         }
     }
@@ -179,8 +181,7 @@ class MainViewController: NSViewController {
         // Preselection First Option "All"
         popupList.selectItem(at: 0)
         
-        // Reset Parser
-        EphemerisDataParser.main.useDateRange = false
+        // Set Parser
         EphemerisDataParser.main.startDate = startDatePicker.dateValue
         EphemerisDataParser.main.endDate = endDatePicker.dateValue
         
@@ -195,25 +196,17 @@ class MainViewController: NSViewController {
         // Set UI
         uiState = .parsing
         
-        // Set Date Range
-        EphemerisDataParser.main.startDate = startDatePicker.dateValue
-        EphemerisDataParser.main.endDate = endDatePicker.dateValue
-        
-        // Load Ephemeris Database File (use Galactic Centered Sidereal Ayanamsa)
-        EphemerisDataParser.main.loadFile()
-        
-        // Parse Loaded Database File
-        DispatchQueue.global().async {
-            EphemerisDataParser.main.parseContent { [weak self] percentComplete in
-                DispatchQueue.main.async {
-                    // Set Percent Complete (0 to 1)
-                    self?.parseProgressIndicator.doubleValue = percentComplete
-                }
-            } onComplete: { [weak self] in
-                DispatchQueue.main.async {
-                    // Set to Full
-                    self?.uiState = .parsed
-                }
+        // Parse from Start Date to End Date
+        EphemerisDataParser.main.parse(from: startDatePicker.dateValue,
+                                       to: endDatePicker.dateValue) {  [weak self] percentComplete in
+            DispatchQueue.main.async {
+                // Set Percent Complete (0 to 1)
+                self?.parseProgressIndicator.doubleValue = percentComplete
+            }
+        } onComplete: { [weak self] in
+            DispatchQueue.main.async {
+                // Set to Full
+                self?.uiState = .parsed
             }
         }
     }
@@ -368,6 +361,7 @@ class MainViewController: NSViewController {
     
     // Reset Button Clicked
     @IBAction func resetDataParserButtonClicked(_ sender: NSButton) {
+        EphemerisDataParser.main.resetParser()
         resetUI()
     }
     
