@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <plugIn identifier="com.apple.MapKitIBPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,7 +108,7 @@
         <!--Psionic Timestream Image Generator-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Psionic Timestream Image Generator" id="XfG-lQ-9wD" customClass="ViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Psionic Timestream Image Generator" id="XfG-lQ-9wD" customClass="MainViewController" customModule="Psionic_Timestream_Image_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="848" height="236"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1035,7 +1034,7 @@ can't exceed
                                     <constraint firstAttribute="width" secondItem="Me6-Sg-Kdb" secondAttribute="height" multiplier="331:124" id="29c-xP-AwQ"/>
                                     <constraint firstAttribute="height" constant="96" id="ieF-Yv-sOR"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Step 1: Parser Ready" bezelStyle="rounded" image="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" imagePosition="below" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="0Qx-o0-jGf">
+                                <buttonCell key="cell" type="bevel" title="Step 1: Parser Ready" bezelStyle="rounded" image="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" imagePosition="below" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="0Qx-o0-jGf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1049,7 +1048,7 @@ can't exceed
                                     <constraint firstAttribute="width" secondItem="iqq-Hb-Sy3" secondAttribute="height" multiplier="331:124" id="9bt-W7-yUZ"/>
                                     <constraint firstAttribute="height" constant="96" id="dBh-9h-366"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Step 3: Generate &amp; Save" bezelStyle="rounded" image="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" imagePosition="below" alignment="center" imageScaling="proportionallyDown" inset="2" id="vDe-v3-3aE">
+                                <buttonCell key="cell" type="bevel" title="Step 3: Generate &amp; Save" bezelStyle="rounded" image="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" imagePosition="below" alignment="center" imageScaling="proportionallyDown" inset="2" id="vDe-v3-3aE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1224,17 +1223,17 @@ Psionic Timestream Maps can be used with Image Classification ML Models to provi
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hdf-yV-l5n"/>
-        <segue reference="TUY-h1-yPA"/>
-        <segue reference="7pn-y1-yEM"/>
+        <segue reference="elb-yl-54T"/>
+        <segue reference="kjr-gV-r2O"/>
+        <segue reference="mrX-79-kY0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSFollowLinkFreestandingTemplate" width="15" height="15"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="PsionicTimestreamImageGenerator_HelpScreen_01" width="1024" height="512"/>
-        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" width="659" height="241"/>
-        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_02" width="662" height="248"/>
-        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" width="662" height="248"/>
+        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_01" width="1024" height="512"/>
+        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_02" width="1024" height="512"/>
+        <image name="PsionicTimestreamImageGenerator_HelpScreen_thumbnail_03" width="1024" height="512"/>
         <image name="gearshape" catalog="system" width="16" height="16"/>
         <image name="info.circle" catalog="system" width="15" height="15"/>
         <image name="location.fill.viewfinder" catalog="system" width="16" height="15"/>
