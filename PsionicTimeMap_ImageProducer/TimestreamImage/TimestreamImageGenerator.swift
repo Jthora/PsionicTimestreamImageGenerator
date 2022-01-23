@@ -11,7 +11,10 @@ import Cocoa
 
 extension Timestream {
     
-    typealias ImageGeneratorOnCompleteCallback = ((_ imagesRendered: Int) -> Void)
+    typealias ImageGeneratorOnStartCallback = (() -> Void)
+    typealias ImageGeneratorOnExitCallback = (() -> Void)
+    typealias ImageGeneratorOnSaveCallback = ((_ successfulSaves: Int, _ expectedImageCount: Int) -> Void)
+    typealias ImageGeneratorOnCompleteCallback = ((_ successfulSaves: Int, _ expectedImageCount: Int) -> Void)
     typealias ImageGeneratorOnErrorCallback = ((_ errorString: String, _ imagesRendered: Int) -> Void)
     final class ImageGenerator {
         
@@ -28,6 +31,9 @@ extension Timestream {
                                        filenamePrefix: String,
                                        startDate: Date,
                                        endDate: Date,
+                                       onStart: ImageGeneratorOnStartCallback? = nil,
+                                       onExit: ImageGeneratorOnExitCallback? = nil,
+                                       onSave: ImageGeneratorOnSaveCallback? = nil,
                                        onComplete: ImageGeneratorOnCompleteCallback? = nil,
                                        onError: ImageGeneratorOnErrorCallback? = nil) {
             
@@ -41,62 +47,80 @@ extension Timestream {
             // Activate Save Screen
             openPanel.begin { [self] (result) in
                 
-                var successfulSaves:Int = 0
                 
                 // Did user press OK button?
                 switch result {
                 case .OK:
                     
-                    // Iterate through every timestream for every planet
-                    for planet in planets {
-                        guard let timestream = timestreams[planet] else {
-                            let errorText = "Warning: No timestream found for planet[\(planet.title)]"
-                            print(errorText)
-                            onError?(errorText, successfulSaves)
-                            continue
-                        }
+                    var successfulSaves: Int = 0
+                    let expectedImageCount: Int = planets.count * colorRenderModes.count * dataMetrics.count
+                    
+                    guard let destinationURL = openPanel.url else {
+                        let errorText = "Pressed OK on SavePanel but with no URL"
+                        print("RENDER ERROR:: \(errorText)")
+                        onError?(errorText, successfulSaves)
+                        return
+                    }
+                    
+                    // Perform Saves in Background
+                    DispatchQueue.global().async {
                         
-                        // Iterate to render every option selected
-                        for colorRenderMode in colorRenderModes {
-                            for dataMetric in dataMetrics {
-                                guard let imageStrip: ImageStrip = self.generateStrip(timestream: timestream,
-                                                                                      colorRenderMode: colorRenderMode,
-                                                                                      dataMetric: dataMetric,
-                                                                                      markYears: markYears,
-                                                                                      markMonths: markMonths) else {
-                                    let errorText = "ERROR: ImageStrip cannot be generated from Timestream"
-                                    print(errorText)
-                                    onError?(errorText, successfulSaves)
-                                    continue
-                                }
-                                
-                                let cgImage = imageStrip.cgImage
-                                let size = NSSize(width: imageStrip.width, height: 1)
-                                let nsImage = NSImage(cgImage: cgImage, size: size)
-
-                                let imageFilename = imageStrip.createFilename(filenamePrefix: filenamePrefix, showMarkings: true, showSampleCount: true, showDateRange: true)
-                                
-                                // Create URL
-                                guard let destinationURL = openPanel.url,
-                                      let fullURL = URL(string: "\(destinationURL)\(imageFilename)") else {
-                                          let errorText = "ERROR: Pressed OK on SavePanel but with no URL"
-                                          print(errorText)
-                                          onError?(errorText, successfulSaves)
-                                          
-                                    continue
-                                }
-                                
-                                // Write Image To Disk
-                                if nsImage.pngWrite(to: fullURL, options: .atomic) {
-                                    print("File saved: \(fullURL)")
-                                    successfulSaves += 1
-                                }
+                        // On User Accept File Location and Render Start Callback
+                        onStart?()
+                        
+                        // Iterate through every timestream for every planet
+                        for planet in planets {
+                            guard let timestream = timestreams[planet] else {
+                                let errorText = "No timestream found for planet[\(planet.title)]"
+                                print("RENDER Warning:: \(errorText)")
+                                onError?(errorText, successfulSaves)
+                                continue
                             }
                             
+                            // Iterate to render every option selected
+                            for colorRenderMode in colorRenderModes {
+                                for dataMetric in dataMetrics {
+                                    guard let imageStrip: ImageStrip = self.generateStrip(timestream: timestream,
+                                                                                          colorRenderMode: colorRenderMode,
+                                                                                          dataMetric: dataMetric,
+                                                                                          markYears: markYears,
+                                                                                          markMonths: markMonths) else {
+                                        let errorText = "ImageStrip cannot be generated from Timestream"
+                                        print("RENDER ERROR:: \(errorText)")
+                                        onError?(errorText, successfulSaves)
+                                        continue
+                                    }
+                                    
+                                    let cgImage = imageStrip.cgImage
+                                    let size = NSSize(width: imageStrip.width, height: 1)
+                                    let nsImage = NSImage(cgImage: cgImage, size: size)
+
+                                    let imageFilename = imageStrip.createFilename(filenamePrefix: filenamePrefix, showMarkings: true, showSampleCount: true, showDateRange: true)
+                                    
+                                    // Create URL
+                                    guard let fullURL = URL(string: "\(destinationURL)\(imageFilename)") else {
+                                        let errorText = "Bad URL: \(destinationURL)\(imageFilename)"
+                                        print("RENDER ERROR:: \(errorText)")
+                                        onError?(errorText, successfulSaves)
+                                        continue
+                                    }
+                                    
+                                    // Write Image To Disk
+                                    if nsImage.pngWrite(to: fullURL, options: .atomic) {
+                                        print("File saved: \(fullURL)")
+                                        successfulSaves += 1
+                                        onSave?(successfulSaves,expectedImageCount)
+                                    }
+                                }
+                                
+                            }
                         }
+                        // On Render Complete Callback
+                        onComplete?(successfulSaves,expectedImageCount)
                     }
-                    onComplete?(successfulSaves)
-                default: break
+                default:
+                    // On User Exit Callback
+                    onExit?()
                 }
             }
         }

@@ -10,10 +10,11 @@ import Cocoa
 
 final class RenderLog {
     
-    static var renderConsoleTextField: NSTextField? = nil
+    static weak var renderConsoleTextView: NSTextView? = nil
+    static weak var renderConsoleScrollView: NSScrollView? = nil
     static let logLengthLimit:Int = 5000
     
-    static var logString: String = ""
+    static var logString: NSAttributedString = NSAttributedString()
     
     private init () {}
     
@@ -72,9 +73,39 @@ final class RenderLog {
     }
     
     // Add Text to Log
-    static func log(text: String) {
-        print(text)
-        logString = "\(text)\n\(logString)"
-        renderConsoleTextField?.stringValue = "\(logString.prefix(logLengthLimit))"
+    static func log(text rawString: String) {
+        DispatchQueue.main.async {
+            let string = "\(rawString)\n"
+            
+            // Font
+            guard let font = NSFont(name: "HelveticaNeue", size: NSFont.smallSystemFontSize) else {
+                preconditionFailure("String cannot form Range: \(string)")
+            }
+            
+            // Text Range
+            guard let range = string.range(of: string)?.nsRange(in: string) else {
+                preconditionFailure("String cannot form Range: \(string)")
+            }
+            
+            // Font and Color
+            let attrStr = NSMutableAttributedString(string: string)
+            let color = NSColor.systemBlue
+            let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor : color,
+                                                              NSAttributedString.Key.font: font]
+            attrStr.setAttributes(attributes, range: range)
+            
+            // Append
+            renderConsoleTextView?.textStorage?.append(attrStr)
+            
+            // Scroll to Bottom
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + TimeInterval(1/60)) {
+                let y = renderConsoleTextView?.frame.size.height ?? 0
+                renderConsoleScrollView?.documentView?.scroll(NSPoint(x: 0, y: y))
+            }
+        }
     }
+}
+
+extension RangeExpression where Bound == String.Index  {
+    func nsRange<S: StringProtocol>(in string: S) -> NSRange { .init(self, in: string) }
 }

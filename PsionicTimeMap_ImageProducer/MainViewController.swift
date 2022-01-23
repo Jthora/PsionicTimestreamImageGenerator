@@ -34,6 +34,7 @@ class MainViewController: NSViewController {
     
     // Generate Image Strip
     @IBOutlet weak var generateButton: NSButton!
+    @IBOutlet weak var generateProgressIndicator: NSProgressIndicator!
     
     // Support Buttons
     @IBOutlet weak var helpButton: NSButton!
@@ -41,7 +42,8 @@ class MainViewController: NSViewController {
     @IBOutlet weak var settingsButton: NSButton!
     
     // Render Console
-    @IBOutlet weak var renderConsoleTextField: NSTextField!
+    @IBOutlet weak var renderConsoleScrollView: NSScrollView!
+    var renderConsoleTextView: NSTextView { return renderConsoleScrollView.documentView! as! NSTextView }
     
     // Filename Example
     @IBOutlet weak var filenameExampleLabel: NSTextField!
@@ -171,7 +173,8 @@ class MainViewController: NSViewController {
     // View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        RenderLog.renderConsoleTextField = renderConsoleTextField
+        RenderLog.renderConsoleTextView = renderConsoleTextView
+        RenderLog.renderConsoleScrollView = renderConsoleScrollView
         uiState = .notParsed
         setupUI()
     }
@@ -179,11 +182,14 @@ class MainViewController: NSViewController {
     // Setup UI
     func setupUI(state:UIState = .notParsed) {
         
+        // Clear Render Console
+        clearConsole()
+        
         // ToolTips
         settingsButton.toolTip = "Settings"
         infoButton.toolTip = "Info"
         helpButton.toolTip = "Instructions"
-        renderConsoleTextField.toolTip = "Log Console"
+        renderConsoleScrollView.toolTip = "Log Console"
         
         // Clear Popup Lists
         planetOptionPopupList.removeAllItems()
@@ -312,14 +318,11 @@ class MainViewController: NSViewController {
             return
         }
         
-        DispatchQueue.main.async {
-            RenderLog.renderStart()
-        }
+        
         
         let planets = Settings.planetOption.planets
         let colorRenderModes = Settings.colorRenderModeOption.colorRenderModes
         let dataMetrics = Settings.dataMetricOption.dataMetrics
-        
         Timestream.ImageGenerator.saveMultipleToDisk(timestreams: timestreams,
                                                      planets: planets,
                                                      colorRenderModes: colorRenderModes,
@@ -330,16 +333,39 @@ class MainViewController: NSViewController {
                                                      markerMonthsWidth: Settings.markerMonthsWidth,
                                                      filenamePrefix: Settings.filenamePrefix,
                                                      startDate: Settings.startDate,
-                                                     endDate: Settings.endDate) { imagesRendered in
+                                                     endDate: Settings.endDate) {
             DispatchQueue.main.async {
-                RenderLog.renderComplete("images rendered: \(imagesRendered)")
+                RenderLog.renderStart()
+                self.generateProgressIndicator.isHidden = false
+                self.generateProgressIndicator.doubleValue = 0
+            }
+        } onExit: {
+            // Cancel Button Pressed
+            DispatchQueue.main.async {
+                print("Cancel Generate & Save")
+                self.generateProgressIndicator.isHidden = true
+                self.generateProgressIndicator.doubleValue = 0
+            }
+        } onSave: { successfulSaves,expectedImageCount in
+            // Image Saved
+            DispatchQueue.main.async {
+                let percentComplete: Double = Double(successfulSaves)/Double(expectedImageCount)
+                self.generateProgressIndicator.isHidden = false
+                self.generateProgressIndicator.doubleValue = percentComplete
+            }
+        } onComplete: { successfulSaves,expectedImageCount in
+            DispatchQueue.main.async {
+                self.generateProgressIndicator.isHidden = true
+                RenderLog.renderComplete("images rendered: \(successfulSaves)/\(expectedImageCount)")
+                self.generateProgressIndicator.doubleValue = 1
             }
         } onError: { errorString, imagesRendered in
             DispatchQueue.main.async {
+                self.generateProgressIndicator.isHidden = false
                 RenderLog.error("\(errorString)\nimages rendered: \(imagesRendered)")
+                self.generateProgressIndicator.doubleValue = 0
             }
         }
-
     }
     
     // Start Date Picker Changed
@@ -512,7 +538,8 @@ class MainViewController: NSViewController {
     
     // Clear Render Console
     func clearConsole() {
-        renderConsoleTextField.stringValue = ""
+        renderConsoleTextView.string = ""
+        renderConsoleScrollView.scroll(NSPoint(x: 0, y: 0))
     }
 }
 
