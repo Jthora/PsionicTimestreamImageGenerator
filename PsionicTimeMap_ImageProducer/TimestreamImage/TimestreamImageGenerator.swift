@@ -10,11 +10,15 @@ import AppKit
 import Cocoa
 
 extension Timestream {
+    
+    typealias ImageGeneratorOnCompleteCallback = ((_ imagesRendered: Int) -> Void)
+    typealias ImageGeneratorOnErrorCallback = ((_ errorString: String, _ imagesRendered: Int) -> Void)
     final class ImageGenerator {
         
         private init() {}
         
         static func saveMultipleToDisk(timestreams: TimestreamSet,
+                                       planets: Timestream.PlanetList,
                                        colorRenderModes: ColorRenderModeList,
                                        dataMetrics: ColorRenderMode.DataMetricList,
                                        markYears: Bool = false,
@@ -23,7 +27,9 @@ extension Timestream {
                                        markerMonthsWidth: Int = 1,
                                        filenamePrefix: String,
                                        startDate: Date,
-                                       endDate: Date) {
+                                       endDate: Date,
+                                       onComplete: ImageGeneratorOnCompleteCallback? = nil,
+                                       onError: ImageGeneratorOnErrorCallback? = nil) {
             
             // Setup Save Screen
             let openPanel = NSOpenPanel()
@@ -35,13 +41,18 @@ extension Timestream {
             // Activate Save Screen
             openPanel.begin { [self] (result) in
                 
+                var successfulSaves:Int = 0
+                
+                // Did user press OK button?
                 switch result {
                 case .OK:
                     
                     // Iterate through every timestream for every planet
-                    for planet in Timestream.Planet.allCases {
+                    for planet in planets {
                         guard let timestream = timestreams[planet] else {
-                            print("Warning: No timestream found for planet[\(planet.title)]")
+                            let errorText = "Warning: No timestream found for planet[\(planet.title)]"
+                            print(errorText)
+                            onError?(errorText, successfulSaves)
                             continue
                         }
                         
@@ -53,7 +64,9 @@ extension Timestream {
                                                                                       dataMetric: dataMetric,
                                                                                       markYears: markYears,
                                                                                       markMonths: markMonths) else {
-                                    print("ERROR: ImageStrip cannot be generated from Timestream")
+                                    let errorText = "ERROR: ImageStrip cannot be generated from Timestream"
+                                    print(errorText)
+                                    onError?(errorText, successfulSaves)
                                     continue
                                 }
                                 
@@ -66,18 +79,23 @@ extension Timestream {
                                 // Create URL
                                 guard let destinationURL = openPanel.url,
                                       let fullURL = URL(string: "\(destinationURL)\(imageFilename)") else {
-                                    print("ERROR: Pressed OK on SavePanel but with no URL")
+                                          let errorText = "ERROR: Pressed OK on SavePanel but with no URL"
+                                          print(errorText)
+                                          onError?(errorText, successfulSaves)
+                                          
                                     continue
                                 }
                                 
                                 // Write Image To Disk
                                 if nsImage.pngWrite(to: fullURL, options: .atomic) {
                                     print("File saved: \(fullURL)")
+                                    successfulSaves += 1
                                 }
                             }
                             
                         }
                     }
+                    onComplete?(successfulSaves)
                 default: break
                 }
             }

@@ -312,10 +312,16 @@ class MainViewController: NSViewController {
             return
         }
         
+        DispatchQueue.main.async {
+            RenderLog.renderStart()
+        }
+        
+        let planets = Settings.planetOption.planets
         let colorRenderModes = Settings.colorRenderModeOption.colorRenderModes
         let dataMetrics = Settings.dataMetricOption.dataMetrics
         
         Timestream.ImageGenerator.saveMultipleToDisk(timestreams: timestreams,
+                                                     planets: planets,
                                                      colorRenderModes: colorRenderModes,
                                                      dataMetrics: dataMetrics,
                                                      markYears: Settings.markYears,
@@ -324,7 +330,16 @@ class MainViewController: NSViewController {
                                                      markerMonthsWidth: Settings.markerMonthsWidth,
                                                      filenamePrefix: Settings.filenamePrefix,
                                                      startDate: Settings.startDate,
-                                                     endDate: Settings.endDate)
+                                                     endDate: Settings.endDate) { imagesRendered in
+            DispatchQueue.main.async {
+                RenderLog.renderComplete("images rendered: \(imagesRendered)")
+            }
+        } onError: { errorString, imagesRendered in
+            DispatchQueue.main.async {
+                RenderLog.error("\(errorString)\nimages rendered: \(imagesRendered)")
+            }
+        }
+
     }
     
     // Start Date Picker Changed
