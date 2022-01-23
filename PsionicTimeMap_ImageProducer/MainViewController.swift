@@ -29,7 +29,7 @@ class MainViewController: NSViewController {
     // Render Settings
     @IBOutlet weak var planetOptionPopupList: NSPopUpButton!
     @IBOutlet weak var colorRenderModePopupList: NSPopUpButton!
-    @IBOutlet weak var renderOptionPopupList: NSPopUpButton!
+    @IBOutlet weak var dataMetricPopupList: NSPopUpButton!
     @IBOutlet weak var filenamePrefix: NSTextField!
     
     // Generate Image Strip
@@ -79,7 +79,7 @@ class MainViewController: NSViewController {
                 // Render Options
                 self.planetOptionPopupList.isEnabled = false
                 self.colorRenderModePopupList.isEnabled = false
-                self.renderOptionPopupList.isEnabled = false
+                self.dataMetricPopupList.isEnabled = false
                 
                 // Generate Button
                 self.generateButton.isEnabled = false
@@ -111,7 +111,7 @@ class MainViewController: NSViewController {
                 // Render Options
                 self.planetOptionPopupList.isEnabled = false
                 self.colorRenderModePopupList.isEnabled = false
-                self.renderOptionPopupList.isEnabled = false
+                self.dataMetricPopupList.isEnabled = false
                 
                 // Generate Button
                 self.generateButton.isEnabled = false
@@ -145,7 +145,7 @@ class MainViewController: NSViewController {
                 // Render Options
                 self.planetOptionPopupList.isEnabled = true
                 self.colorRenderModePopupList.isEnabled = true
-                self.renderOptionPopupList.isEnabled = true
+                self.dataMetricPopupList.isEnabled = true
                 
                 // Generate Button
                 self.generateButton.isEnabled = true
@@ -183,14 +183,23 @@ class MainViewController: NSViewController {
         settingsButton.toolTip = "Settings"
         infoButton.toolTip = "Info"
         helpButton.toolTip = "Instructions"
+        renderConsoleTextField.toolTip = "Log Console"
         
         // Clear Popup Lists
         planetOptionPopupList.removeAllItems()
         colorRenderModePopupList.removeAllItems()
-        renderOptionPopupList.removeAllItems()
+        dataMetricPopupList.removeAllItems()
         
-        // Add an "All" Option for Auto-generating image strips for each available planet option
+        // Add an "All" Option for Auto-generating image strips for each available option
         planetOptionPopupList.addItem(withTitle: Settings.PlanetOption.all.title)
+        colorRenderModePopupList.addItem(withTitle: Settings.ColorRenderModeOption.all.title)
+        dataMetricPopupList.addItem(withTitle: Settings.DataMetricOption.all.title)
+        
+//        TODO:: Support Lists of Options
+//        // Add a "Multiple" Option for Auto-generating image strips for a list of selected options
+//        planetOptionPopupList.addItem(withTitle: Settings.PlanetOption.all.title)
+//        colorRenderModePopupList.addItem(withTitle: Settings.ColorRenderModeOption.all.title)
+//        renderOptionPopupList.addItem(withTitle: Settings.RenderOption.all.title)
         
         // Add Planets as Options
         for planet in Timestream.Planet.allCases {
@@ -203,14 +212,14 @@ class MainViewController: NSViewController {
         }
         
         // Add an Option for each Planet
-        for renderOption in Timestream.ImageGenerator.ColorRenderMode.RenderOption.allCases {
-            renderOptionPopupList.addItem(withTitle: renderOption.title)
+        for renderOption in Timestream.ImageGenerator.ColorRenderMode.DataMetric.allCases {
+            dataMetricPopupList.addItem(withTitle: renderOption.title)
         }
         
         // Preselection First Option "All"
         planetOptionPopupList.selectItem(at: 0)
         colorRenderModePopupList.selectItem(at: 0)
-        renderOptionPopupList.selectItem(at: 0)
+        dataMetricPopupList.selectItem(at: 0)
         
         // Numbers Only
         markerYearsTextField.formatter = OnlyIntegerValueFormatter()
@@ -227,10 +236,35 @@ class MainViewController: NSViewController {
     }
     
     func updateFilenameExample() {
+        
+        // Planet
+        let examplePlanet:Timestream.Planet
+        switch Settings.planetOption {
+        case .all: examplePlanet = .sun
+        case .list(let planets): examplePlanet = planets.first ?? .sun
+        case .specific(let planet): examplePlanet = planet
+        }
+        
+        // Color Render Mode
+        let exampleColorRenderMode:Timestream.ImageGenerator.ColorRenderMode
+        switch Settings.colorRenderModeOption {
+        case .all: exampleColorRenderMode = .colorGradient
+        case .list(let colorRenderModes): exampleColorRenderMode = colorRenderModes.first ?? .colorGradient
+        case .specific(let colorRenderMode): exampleColorRenderMode = colorRenderMode
+        }
+        
+        // Data Metric
+        let exampleDataMetric:Timestream.ImageGenerator.ColorRenderMode.DataMetric
+        switch Settings.dataMetricOption {
+        case .all: exampleDataMetric = .harmonics
+        case .list(let renderOptions): exampleDataMetric = renderOptions.first ?? .harmonics
+        case .specific(let renderOption): exampleDataMetric = renderOption
+        }
+        
         let filenameExample:String = Timestream.ImageStrip.createFilename(filenamePrefix: Settings.filenamePrefix,
-                                                                          planet: .sun,
-                                                                          colorRenderMode: Settings.colorRenderMode,
-                                                                          renderOption: Settings.renderOption,
+                                                                          planet: examplePlanet,
+                                                                          colorRenderMode: exampleColorRenderMode,
+                                                                          dataMetric: exampleDataMetric,
                                                                           startDate: Settings.startDate,
                                                                           endDate: Settings.endDate,
                                                                           samples: Settings.days,
@@ -245,6 +279,11 @@ class MainViewController: NSViewController {
     // Parse Ephemeris Data (galactic centered - sidereal astrology - planetary positions) [Galactic Centered Only!]
     @IBAction func parseDataButtonPressed(_ sender: Any) {
         
+        // Log that Parser Started
+        DispatchQueue.main.async {
+            RenderLog.parseStart()
+        }
+        
         // Set UI
         uiState = .parsing
         
@@ -255,10 +294,11 @@ class MainViewController: NSViewController {
                 // Set Percent Complete (0 to 1)
                 self?.parseProgressIndicator.doubleValue = percentComplete
             }
-        } onComplete: { [weak self] timestreams in
+        } onComplete: { [weak self] timestreams,entriesCount  in
             Settings.timestreams = timestreams
             DispatchQueue.main.async {
                 // Set to Full
+                RenderLog.parseComplete("created \(timestreams.count) timestreams\nparsed \(entriesCount) entries")
                 self?.uiState = .parsed
             }
         }
@@ -266,39 +306,25 @@ class MainViewController: NSViewController {
     
     // Generate & Save PNG Image Strip
     @IBAction func generateButtonPressed(_ sender: NSButton) {
-        // Render All Options or Render Only Selected
-        switch Settings.planetOption {
-        case .all:
-            // Generate Image Strip for Every Planet
-            guard let timestreams = Settings.timestreams else {
-                RenderLog.error("Timestreams missing")
-                return
-            }
-            Timestream.ImageGenerator.saveMultipleToDisk(timestreams: timestreams,
-                                                         colorRenderMode: Settings.colorRenderMode,
-                                                         renderOption: Settings.renderOption,
-                                                         markYears: Settings.markYears,
-                                                         markMonths: Settings.markMonths,
-                                                         markerYearsWidth: Settings.markerYearsWidth,
-                                                         markerMonthsWidth: Settings.markerMonthsWidth,
-                                                         filenamePrefix: Settings.filenamePrefix,
-                                                         startDate: Settings.startDate,
-                                                         endDate: Settings.endDate)
-        case .specific(let planet):
-            // Generate Image Strip for Single Planet
-            guard let timestream = Settings.timestreams?[planet],
-                  let imageStrip = Timestream.ImageGenerator.generateStrip(timestream: timestream,
-                                                                           colorRenderMode: Settings.colorRenderMode,
-                                                                           renderOption: Settings.renderOption,
-                                                                           markerYearsWidth: Settings.markerYearsWidth,
-                                                                           markerMonthsWidth: Settings.markerMonthsWidth,
-                                                                           markYears: Settings.markYears,
-                                                                           markMonths: Settings.markMonths) else {
-                RenderLog.error("generateButtonPressed:\n Cannot generateStrip")
-                return
-            }
-            imageStrip.save()
+        // Generate Image Strip for Every Planet
+        guard let timestreams = Settings.timestreams else {
+            RenderLog.error("Timestreams missing")
+            return
         }
+        
+        let colorRenderModes = Settings.colorRenderModeOption.colorRenderModes
+        let dataMetrics = Settings.dataMetricOption.dataMetrics
+        
+        Timestream.ImageGenerator.saveMultipleToDisk(timestreams: timestreams,
+                                                     colorRenderModes: colorRenderModes,
+                                                     dataMetrics: dataMetrics,
+                                                     markYears: Settings.markYears,
+                                                     markMonths: Settings.markMonths,
+                                                     markerYearsWidth: Settings.markerYearsWidth,
+                                                     markerMonthsWidth: Settings.markerMonthsWidth,
+                                                     filenamePrefix: Settings.filenamePrefix,
+                                                     startDate: Settings.startDate,
+                                                     endDate: Settings.endDate)
     }
     
     // Start Date Picker Changed
@@ -364,12 +390,12 @@ class MainViewController: NSViewController {
             return
         }
         
-        guard let renderOption = Timestream.ImageGenerator.ColorRenderMode.RenderOption.from(title: renderOptionTitle) else {
+        guard let dataMetricOption = Settings.DataMetricOption.from(title: renderOptionTitle) else {
             print("ERROR:: onSelectRenderOption:\n Title Selected is NOT a Render Mode")
             return
         }
         
-        Settings.renderOption = renderOption
+        Settings.dataMetricOption = dataMetricOption
         updateUI()
     }
     
@@ -382,12 +408,12 @@ class MainViewController: NSViewController {
             return
         }
         
-        guard let colorRenderMode = Timestream.ImageGenerator.ColorRenderMode.from(title: colorRenderModeTitle) else {
+        guard let colorRenderModeOption = Settings.ColorRenderModeOption.from(title: colorRenderModeTitle) else {
             print("ERROR:: onSelectRenderOption:\n Title Selected is NOT a Render Mode")
             return
         }
         
-        Settings.colorRenderMode = colorRenderMode
+        Settings.colorRenderModeOption = colorRenderModeOption
         updateUI()
     }
     
@@ -438,7 +464,9 @@ class MainViewController: NSViewController {
     
     // Update Settings based on UI
     func updateUIFromSettings() {
-        
+        planetOptionPopupList.selectItem(withTitle: Settings.planetOption.title)
+        colorRenderModePopupList.selectItem(withTitle: Settings.colorRenderModeOption.title)
+        dataMetricPopupList.selectItem(withTitle: Settings.dataMetricOption.title)
     }
     
     // Update Settings based on UI
@@ -449,20 +477,22 @@ class MainViewController: NSViewController {
         Settings.endDate = endDatePicker.dateValue
         
         // Selected Option
-        if let selectedPlanetOptionTitle = planetOptionPopupList.titleOfSelectedItem,
-            let selectedPlanetOption = Settings.PlanetOption.from(title: selectedPlanetOptionTitle) {
-            // Render All Options or Render Only Selected
-            Settings.planetOption = selectedPlanetOption
+        if let planetOptionTitle = planetOptionPopupList.titleOfSelectedItem,
+            let planetOption = Settings.PlanetOption.from(title: planetOptionTitle) {
+            Settings.planetOption = planetOption
         }
         
-        // Selected Render Mode
+        // Selected Color Render Mode
         if let colorRenderModeTitle = colorRenderModePopupList.titleOfSelectedItem,
-              let colorRenderMode = Timestream.ImageGenerator.ColorRenderMode.from(title: colorRenderModeTitle) {
-            Settings.colorRenderMode = colorRenderMode
+              let colorRenderModeOption = Settings.ColorRenderModeOption.from(title: colorRenderModeTitle) {
+            Settings.colorRenderModeOption = colorRenderModeOption
         }
         
-        
-        
+        // Selected Render Option
+        if let dataMetricTitle = colorRenderModePopupList.titleOfSelectedItem,
+              let dataMetricOption = Settings.DataMetricOption.from(title: dataMetricTitle) {
+            Settings.dataMetricOption = dataMetricOption
+        }
     }
     
     // Clear Render Console

@@ -13,7 +13,7 @@ extension Timestream {
         var cgImage: CGImage
         let planet: Planet
         let colorRenderMode: ImageGenerator.ColorRenderMode
-        let renderOption: ImageGenerator.ColorRenderMode.RenderOption
+        let dataMetric: ImageGenerator.ColorRenderMode.DataMetric
         let markMonths: Bool
         let markYears: Bool
         var width:Int { return cgImage.width }
@@ -27,7 +27,7 @@ extension Timestream {
             return ImageStrip.createFilename(filenamePrefix: filenamePrefix,
                                              planet: planet,
                                              colorRenderMode: colorRenderMode,
-                                             renderOption: renderOption,
+                                             dataMetric: dataMetric,
                                              startDate: startDate,
                                              endDate: endDate,
                                              samples: width,
@@ -42,7 +42,7 @@ extension Timestream {
         static func createFilename(filenamePrefix:String? = nil,
                                    timestream:Timestream,
                                    colorRenderMode:Timestream.ImageGenerator.ColorRenderMode,
-                                   renderOption:Timestream.ImageGenerator.ColorRenderMode.RenderOption,
+                                   dataMetric:Timestream.ImageGenerator.ColorRenderMode.DataMetric,
                                    markYears: Bool,
                                    markMonths: Bool,
                                    showMarkings:Bool = true,
@@ -51,7 +51,7 @@ extension Timestream {
             return createFilename(filenamePrefix: filenamePrefix,
                                   planet: timestream.planet,
                                   colorRenderMode: colorRenderMode,
-                                  renderOption: renderOption,
+                                  dataMetric: dataMetric,
                                   startDate: timestream.startDate,
                                   endDate: timestream.endDate,
                                   samples: timestream.samples.count,
@@ -66,7 +66,7 @@ extension Timestream {
         static func createFilename(filenamePrefix:String? = nil,
                                    planet:Timestream.Planet,
                                    colorRenderMode:Timestream.ImageGenerator.ColorRenderMode,
-                                   renderOption:Timestream.ImageGenerator.ColorRenderMode.RenderOption,
+                                   dataMetric:Timestream.ImageGenerator.ColorRenderMode.DataMetric,
                                    startDate: Date,
                                    endDate: Date,
                                    samples:Int,
@@ -90,7 +90,7 @@ extension Timestream {
             let sampleCountText = showSampleCount ? "-\(samples)samples" : ""
             
             // Set New Image Filename
-            let imageFilename = "\(filenamePrefixText)\(planet.rawValue)\(markingsText)-\(colorRenderMode.filenameText)-\(renderOption.filenameText)\(sampleCountText)\(dateRangeString).png"
+            let imageFilename = "\(filenamePrefixText)\(planet.rawValue)\(markingsText)-\(colorRenderMode.filenameText)-\(dataMetric.filenameText)\(sampleCountText)\(dateRangeString).png"
             
             // Return Image Filename
             return imageFilename

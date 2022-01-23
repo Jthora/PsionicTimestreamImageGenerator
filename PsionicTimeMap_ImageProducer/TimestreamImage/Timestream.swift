@@ -52,6 +52,7 @@ struct Timestream {
     }
     
     
+    typealias PlanetList = [Planet]
     enum Planet:String, CaseIterable {
         case sun
         case moon
@@ -136,13 +137,13 @@ struct Timestream {
         }
     }
     
-    func generateAndSaveImageToDisk(colorRenderMode: Timestream.ImageGenerator.ColorRenderMode, renderOption: Timestream.ImageGenerator.ColorRenderMode.RenderOption, markYears: Bool, markMonths: Bool) {
-        let imageStrip = generateImageStrip(colorRenderMode: colorRenderMode, renderOption: renderOption, markYears: markYears, markMonths: markMonths)
+    func generateAndSaveImageToDisk(colorRenderMode: Timestream.ImageGenerator.ColorRenderMode, dataMetric: Timestream.ImageGenerator.ColorRenderMode.DataMetric, markYears: Bool, markMonths: Bool) {
+        let imageStrip = generateImageStrip(colorRenderMode: colorRenderMode, dataMetric: dataMetric, markYears: markYears, markMonths: markMonths)
         imageStrip?.save()
     }
     
-    func generateImageStrip(colorRenderMode: Timestream.ImageGenerator.ColorRenderMode, renderOption: Timestream.ImageGenerator.ColorRenderMode.RenderOption, markYears: Bool, markMonths: Bool) -> Timestream.ImageStrip? {
-        return Timestream.ImageGenerator.generateStrip(timestream: self, colorRenderMode: colorRenderMode, renderOption: renderOption, markYears: markYears, markMonths: markMonths)
+    func generateImageStrip(colorRenderMode: Timestream.ImageGenerator.ColorRenderMode, dataMetric: Timestream.ImageGenerator.ColorRenderMode.DataMetric, markYears: Bool, markMonths: Bool) -> Timestream.ImageStrip? {
+        return Timestream.ImageGenerator.generateStrip(timestream: self, colorRenderMode: colorRenderMode, dataMetric: dataMetric, markYears: markYears, markMonths: markMonths)
     }
     
     typealias TimestreamSet = [Planet:Timestream]

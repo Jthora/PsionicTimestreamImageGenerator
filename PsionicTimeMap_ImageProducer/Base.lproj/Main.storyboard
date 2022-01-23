@@ -373,15 +373,15 @@
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yzw-VI-Bgz">
                                 <rect key="frame" x="143" y="93" width="125" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Color Render Mode:" id="d3R-5z-yZe">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Render Color Mode:" id="d3R-5z-yZe">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-9j-K3U">
-                                <rect key="frame" x="202" y="123" width="91" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Planet Option:" id="rn7-0p-VHg">
+                                <rect key="frame" x="247" y="123" width="46" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Planet:" id="rn7-0p-VHg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -435,7 +435,10 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NTI-wT-7ay">
                                 <rect key="frame" x="582" y="32" width="246" height="81"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Render Console" drawsBackground="YES" id="vfk-Wy-ACg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="nb3-no-bD4"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" alignment="left" drawsBackground="YES" id="vfk-Wy-ACg">
                                     <font key="font" metaFont="system" size="11"/>
                                     <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -462,8 +465,8 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ra1-wp-BJm">
-                                <rect key="frame" x="172" y="63" width="96" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Render Option:" id="mYd-K7-30X">
+                                <rect key="frame" x="143" y="63" width="125" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Render Data Metric:" id="mYd-K7-30X">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -558,6 +561,7 @@
                         <outlet property="checkboxMarkMonths" destination="BLd-Nh-21r" id="uJr-Yi-qiK"/>
                         <outlet property="checkboxMarkYears" destination="8RG-EI-89G" id="ORB-iR-rrW"/>
                         <outlet property="colorRenderModePopupList" destination="h4C-8i-va7" id="Bs2-n2-Sgn"/>
+                        <outlet property="dataMetricPopupList" destination="CA1-My-Uai" id="gqo-Om-yxD"/>
                         <outlet property="endDatePicker" destination="Hz1-FG-szo" id="vIl-ee-NJl"/>
                         <outlet property="filenameExampleLabel" destination="5af-Sy-8JD" id="2mc-ov-Qp5"/>
                         <outlet property="filenamePrefix" destination="l8A-aZ-rQl" id="zTr-en-Aau"/>
@@ -573,7 +577,6 @@
                         <outlet property="parsingLabel" destination="5lL-uh-aib" id="IP4-LB-vUl"/>
                         <outlet property="planetOptionPopupList" destination="PFQ-af-DB6" id="KcK-cZ-Z3m"/>
                         <outlet property="renderConsoleTextField" destination="NTI-wT-7ay" id="KoE-yM-8sV"/>
-                        <outlet property="renderOptionPopupList" destination="CA1-My-Uai" id="rmc-RD-Kx6"/>
                         <outlet property="resetDataParserButton" destination="W2e-Ng-6MV" id="Pdq-Zb-KDJ"/>
                         <outlet property="settingsButton" destination="4gm-wa-MMJ" id="IzF-bP-0GA"/>
                         <outlet property="startDatePicker" destination="7WA-BR-2w9" id="FHN-ab-t1S"/>

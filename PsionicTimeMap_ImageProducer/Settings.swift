@@ -12,7 +12,12 @@ import Combine
 
 struct Settings {
     
-    // Selected Planet Option
+    // Timestreams
+    /// Image Strip Generator Settings
+    static var timestreams: Timestream.TimestreamSet? = nil
+    
+    // Planet Option
+    /// Selected Planet Option
     static var planetOption: PlanetOption = .all {
         didSet {
             RenderLog.set(planetOption: planetOption)
@@ -20,11 +25,13 @@ struct Settings {
     }
     enum PlanetOption {
         case all
+        case list(planets: Timestream.PlanetList)
         case specific(planet: Timestream.Planet)
         
         var title: String {
             switch self {
-            case .all: return "All"
+            case .all: return "All Planets"
+            case .list: return "Multiple"
             case .specific(let planet): return "\(planet.title)"
             }
         }
@@ -33,7 +40,15 @@ struct Settings {
             return self.title == title
         }
         
-        static func from(title:String) -> PlanetOption? {
+        var planets:Timestream.PlanetList {
+            switch self {
+            case .all: return Timestream.Planet.allCases
+            case .list(let planet): return planet
+            case .specific(let planet): return [planet]
+            }
+        }
+        
+        static func from(title:String, planets: Timestream.PlanetList = []) -> PlanetOption? {
             if PlanetOption.all.has(title: title) {
                 return PlanetOption.all
             }
@@ -41,29 +56,115 @@ struct Settings {
                 let planetOption = PlanetOption.specific(planet: planet)
                 if planetOption.has(title: title) { return planetOption }
             }
+            if PlanetOption.list(planets: planets).has(title: title) {
+                return PlanetOption.list(planets: planets)
+            }
             return nil
         }
     }
     
-    // Image Strip Generator Settings
-    static var timestreams: Timestream.TimestreamSet? = nil
-    
-    static var colorRenderMode: Timestream.ImageGenerator.ColorRenderMode = .colorGradient {
+    // Color Render Mode Option
+    /// Selected Color Render Mode Option
+    static var colorRenderModeOption: ColorRenderModeOption = .all {
         didSet {
-            RenderLog.set(colorRenderMode: colorRenderMode)
+            RenderLog.set(colorRenderMode: colorRenderModeOption)
+        }
+    }
+    enum ColorRenderModeOption {
+        case all
+        case list(colorRenderModes: Timestream.ImageGenerator.ColorRenderModeList)
+        case specific(colorRenderMode: Timestream.ImageGenerator.ColorRenderMode)
+        
+        var title: String {
+            switch self {
+            case .all: return "All Color Modes"
+            case .list: return "Multiple"
+            case .specific(let colorRenderMode): return "\(colorRenderMode.title)"
+            }
+        }
+        
+        func has(title:String) -> Bool {
+            return self.title == title
+        }
+        
+        var colorRenderModes:Timestream.ImageGenerator.ColorRenderModeList {
+            switch self {
+            case .all: return Timestream.ImageGenerator.ColorRenderMode.allCases
+            case .list(let colorRenderModes): return colorRenderModes
+            case .specific(let colorRenderMode): return [colorRenderMode]
+            }
+        }
+        
+        static func from(title:String, colorRenderModes: Timestream.ImageGenerator.ColorRenderModeList = []) -> ColorRenderModeOption? {
+            if ColorRenderModeOption.all.has(title: title) {
+                return ColorRenderModeOption.all
+            }
+            for colorRenderMode in Timestream.ImageGenerator.ColorRenderMode.allCases {
+                let colorRenderModeOption = ColorRenderModeOption.specific(colorRenderMode: colorRenderMode)
+                if colorRenderModeOption.has(title: title) { return colorRenderModeOption }
+            }
+            if ColorRenderModeOption.list(colorRenderModes: colorRenderModes).has(title: title) {
+                return ColorRenderModeOption.list(colorRenderModes: colorRenderModes)
+            }
+            return nil
         }
     }
     
-    static var renderOption: Timestream.ImageGenerator.ColorRenderMode.RenderOption = .harmonics {
+    // Data Metric Option
+    /// Selected Data Metric Option
+    static var dataMetricOption: DataMetricOption = .all {
         didSet {
-            RenderLog.set(renderOption: renderOption)
+            RenderLog.set(dataMetric: dataMetricOption)
+        }
+    }
+    enum DataMetricOption {
+        case all
+        case list(dataMetrics: Timestream.ImageGenerator.ColorRenderMode.DataMetricList)
+        case specific(dataMetric: Timestream.ImageGenerator.ColorRenderMode.DataMetric)
+        
+        var title: String {
+            switch self {
+            case .all: return "All Data Metrics"
+            case .list: return "Multiple Data Metrics"
+            case .specific(let renderOption): return "\(renderOption.title)"
+            }
+        }
+        
+        func has(title:String) -> Bool {
+            return self.title == title
+        }
+        
+        var dataMetrics:Timestream.ImageGenerator.ColorRenderMode.DataMetricList {
+            switch self {
+            case .all: return Timestream.ImageGenerator.ColorRenderMode.DataMetric.allCases
+            case .list(let dataMetrics): return dataMetrics
+            case .specific(let dataMetric): return [dataMetric]
+            }
+        }
+        
+        static func from(title:String, dataMetrics: Timestream.ImageGenerator.ColorRenderMode.DataMetricList = []) -> DataMetricOption? {
+            if DataMetricOption.all.has(title: title) {
+                return DataMetricOption.all
+            }
+            for dataMetric in Timestream.ImageGenerator.ColorRenderMode.DataMetric.allCases {
+                if dataMetric.has(title: title) {
+                    return DataMetricOption.specific(dataMetric: dataMetric)
+                }
+            }
+            if DataMetricOption.list(dataMetrics: dataMetrics).has(title: title) {
+                return DataMetricOption.list(dataMetrics: dataMetrics)
+            }
+            return nil
         }
     }
     
+    // Markings
     static var markYears: Bool = false
     static var markMonths: Bool = false
     static var markerYearsWidth: Int = 2
     static var markerMonthsWidth: Int = 1
+    
+    // Filename
     static var filenamePrefix: String = "timestream"
     
     // Sample Density

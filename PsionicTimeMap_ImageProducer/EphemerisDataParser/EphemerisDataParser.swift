@@ -16,8 +16,8 @@ struct Ephemeris {
     static let maxDate: Date = Date.init(year: 2062, month: 12, day: 31, timeZone: nil, hour: 0, minute: 0)!
     
     class DataParser {
-        typealias OnStepCallback = ((Double)->Void)
-        typealias OnCompleteCallback = ((Timestream.TimestreamSet)->Void)
+        typealias OnStepCallback = ((_ percentProgress: Double)->Void)
+        typealias OnCompleteCallback = ((_ timestreams: Timestream.TimestreamSet, _ entriesParsed: Int)->Void)
         
         let useDateRange:Bool = true
         
@@ -191,11 +191,12 @@ struct Ephemeris {
                     }
                     let endDiff = date.timeIntervalSince(endDate)
                     if endDiff > 0 {
-                        print("Entries Parsed: \(allSamples[.sun]?.count ?? -1)")
+                        let entriesCount = allSamples[.sun]?.count ?? -1
+                        print("Entries Parsed: \(entriesCount)")
                         let timestreams = Timestream.generateTimestreamSet(allSamples: allSamples,
                                                          startDate: startDate ?? minDate,
                                                          endDate: endDate)
-                        onComplete?(timestreams)
+                        onComplete?(timestreams, entriesCount)
                         return
                     }
                 }
@@ -274,10 +275,13 @@ struct Ephemeris {
             let timestreamSet = Timestream.generateTimestreamSet(allSamples: allSamples,
                                              startDate: startDate,
                                              endDate: endDate)
-            print("Entries Parsed: \(timestreamSet[.sun]?.samples.count ?? -1)")
+            
+            // Create Entries Count
+            let entriesCount = timestreamSet[.sun]?.samples.count ?? -1
+            print("Entries Parsed: \(entriesCount)")
             
             // Call OnComplete with TimestreamSet
-            onComplete?(timestreamSet)
+            onComplete?(timestreamSet, entriesCount)
         }
         
         enum Month:String, CaseIterable {

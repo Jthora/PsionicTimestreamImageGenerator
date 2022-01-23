@@ -11,36 +11,54 @@ import Cocoa
 final class RenderLog {
     
     static var renderConsoleTextField: NSTextField? = nil
-    static let logLengthLimit:Int = 125
+    static let logLengthLimit:Int = 5000
     
     static var logString: String = ""
     
     private init () {}
     
-    // Report Render Complete
-    static func renderStart(_ text: String) {
-        log(text:"⭐️ RENDER START\n\(text)")
+    // Report Parse Start
+    static func parseStart() {
+        log(text:"▶️ PARSE START")
     }
     
-    static func set(planetOption:Settings.PlanetOption) {
-        set(text: planetOption.title)
+    // Report Parse Complete
+    static func parseComplete(_ details: String) {
+        log(text:"✅ PARSE COMPLETE\n\(details)")
     }
     
-    static func set(renderOption:Timestream.ImageGenerator.ColorRenderMode.RenderOption) {
-        set(text: renderOption.title)
-    }
-    
-    static func set(colorRenderMode:Timestream.ImageGenerator.ColorRenderMode) {
-        set(text: colorRenderMode.shortTitle)
-    }
-    
-    static func set(text:String) {
-        log(text:"🔹 Set: \(text)")
+    // Report Render Start
+    static func renderStart() {
+        log(text:"⏩ RENDER START")
     }
     
     // Report Render Complete
     static func renderComplete(_ details: String) {
-        log(text:"✅ RENDER COMPLETE\nDetails: \(details)")
+        log(text:"✅ RENDER COMPLETE\n\(details)")
+    }
+    
+    // Report Saved Image
+    static func saved(_ fileLocation: String) {
+        log(text:"💾 SAVED\n📂: \(fileLocation)")
+    }
+    
+    // Report Planet Set
+    static func set(planetOption:Settings.PlanetOption) {
+        set(text: planetOption.title)
+    }
+    
+    // Report Data Metric Set
+    static func set(dataMetric:Settings.DataMetricOption) {
+        set(text: dataMetric.title)
+    }
+    
+    // Report Color Mode Set
+    static func set(colorRenderMode:Settings.ColorRenderModeOption) {
+        set(text: colorRenderMode.title)
+    }
+    
+    static func set(text:String) {
+        log(text:"🔹 Set: \(text)")
     }
     
     // Report Error

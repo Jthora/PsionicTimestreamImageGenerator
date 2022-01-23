@@ -9,10 +9,5 @@
 import Foundation
 
 struct Constants {
-    enum Option: String, CaseIterable {
-        case All
-    }
-    struct Text {
-        
-    }
+    
 }

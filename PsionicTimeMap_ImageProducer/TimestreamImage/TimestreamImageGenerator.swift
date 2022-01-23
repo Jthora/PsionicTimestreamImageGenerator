@@ -15,54 +15,67 @@ extension Timestream {
         private init() {}
         
         static func saveMultipleToDisk(timestreams: TimestreamSet,
-                                         colorRenderMode: ColorRenderMode,
-                                         renderOption: ColorRenderMode.RenderOption,
-                                         markYears: Bool = false,
-                                         markMonths: Bool = false,
-                                         markerYearsWidth: Int = 2,
-                                         markerMonthsWidth: Int = 1,
-                                         filenamePrefix: String,
-                                         startDate: Date,
-                                         endDate: Date) {
+                                       colorRenderModes: ColorRenderModeList,
+                                       dataMetrics: ColorRenderMode.DataMetricList,
+                                       markYears: Bool = false,
+                                       markMonths: Bool = false,
+                                       markerYearsWidth: Int = 2,
+                                       markerMonthsWidth: Int = 1,
+                                       filenamePrefix: String,
+                                       startDate: Date,
+                                       endDate: Date) {
             
+            // Setup Save Screen
             let openPanel = NSOpenPanel()
-            
             openPanel.canCreateDirectories = true
             openPanel.canChooseFiles = false
             openPanel.canChooseDirectories = true
             openPanel.allowsMultipleSelection = false
             
+            // Activate Save Screen
             openPanel.begin { [self] (result) in
                 
                 switch result {
                 case .OK:
+                    
+                    // Iterate through every timestream for every planet
                     for planet in Timestream.Planet.allCases {
-                        guard let timestream = timestreams[planet],
-                            let imageStrip: ImageStrip = self.generateStrip(timestream: timestream,
-                                                                            colorRenderMode: colorRenderMode,
-                                                                            renderOption: renderOption,
-                                                                            markYears: markYears,
-                                                                            markMonths: markMonths) else {
-                            print("ERROR: ImageStrip cannot be generated from Timestream")
-                            return
+                        guard let timestream = timestreams[planet] else {
+                            print("Warning: No timestream found for planet[\(planet.title)]")
+                            continue
                         }
                         
-                        let cgImage = imageStrip.cgImage
-                        let size = NSSize(width: imageStrip.width, height: 1)
-                        let nsImage = NSImage(cgImage: cgImage, size: size)
+                        // Iterate to render every option selected
+                        for colorRenderMode in colorRenderModes {
+                            for dataMetric in dataMetrics {
+                                guard let imageStrip: ImageStrip = self.generateStrip(timestream: timestream,
+                                                                                      colorRenderMode: colorRenderMode,
+                                                                                      dataMetric: dataMetric,
+                                                                                      markYears: markYears,
+                                                                                      markMonths: markMonths) else {
+                                    print("ERROR: ImageStrip cannot be generated from Timestream")
+                                    continue
+                                }
+                                
+                                let cgImage = imageStrip.cgImage
+                                let size = NSSize(width: imageStrip.width, height: 1)
+                                let nsImage = NSImage(cgImage: cgImage, size: size)
 
-                        let imageFilename = imageStrip.createFilename(filenamePrefix: filenamePrefix, showMarkings: true, showSampleCount: true, showDateRange: true)
-                        
-                        // Create URL
-                        guard let destinationURL = openPanel.url,
-                              let fullURL = URL(string: "\(destinationURL)\(imageFilename)") else {
-                            print("ERROR: Pressed OK on SavePanel but with no URL")
-                            return
-                        }
-                        
-                        // Write Image To Disk
-                        if nsImage.pngWrite(to: fullURL, options: .atomic) {
-                            print("File saved: \(fullURL)")
+                                let imageFilename = imageStrip.createFilename(filenamePrefix: filenamePrefix, showMarkings: true, showSampleCount: true, showDateRange: true)
+                                
+                                // Create URL
+                                guard let destinationURL = openPanel.url,
+                                      let fullURL = URL(string: "\(destinationURL)\(imageFilename)") else {
+                                    print("ERROR: Pressed OK on SavePanel but with no URL")
+                                    continue
+                                }
+                                
+                                // Write Image To Disk
+                                if nsImage.pngWrite(to: fullURL, options: .atomic) {
+                                    print("File saved: \(fullURL)")
+                                }
+                            }
+                            
                         }
                     }
                 default: break
@@ -73,7 +86,7 @@ extension Timestream {
         static var pixelsLeftForLargeMark:Int = 0
         static func generateStrip(timestream: Timestream,
                                   colorRenderMode: Timestream.ImageGenerator.ColorRenderMode,
-                                  renderOption: Timestream.ImageGenerator.ColorRenderMode.RenderOption,
+                                  dataMetric: Timestream.ImageGenerator.ColorRenderMode.DataMetric,
                                   markerYearsWidth: Int = 2,
                                   markerMonthsWidth: Int = 1,
                                   markYears:Bool,
@@ -107,7 +120,7 @@ extension Timestream {
                 }
                 
                 // Render RGBAColor for Timestream Sample and Color Render Mode and Render Option
-                return colorRenderMode.renderColor(option: renderOption, sample: sample)
+                return colorRenderMode.renderColor(dataMetric: dataMetric, sample: sample)
             }
 
             let bitmapCount: Int = rgbaArray.count
@@ -129,7 +142,7 @@ extension Timestream {
             return Timestream.ImageStrip(cgImage: cgImage,
                                          planet: timestream.planet,
                                          colorRenderMode: colorRenderMode,
-                                         renderOption: renderOption,
+                                         dataMetric: dataMetric,
                                          markMonths: markMonths,
                                          markYears: markYears,
                                          startDate: timestream.startDate,
@@ -137,6 +150,7 @@ extension Timestream {
         }
         
         // Color Render Mode
+        typealias ColorRenderModeList = [ColorRenderMode]
         enum ColorRenderMode: String, CaseIterable {
             
             // Color Render Modes
@@ -148,7 +162,8 @@ extension Timestream {
             case clear
             
             // Color Render Options
-            enum RenderOption: String, CaseIterable {
+            typealias DataMetricList = [DataMetric]
+            enum DataMetric: String, CaseIterable {
                 case harmonics
                 case retrogrades
                 case gravimetrics
@@ -171,9 +186,9 @@ extension Timestream {
                     return self.title == title
                 }
                 
-                static func from(title:String) -> RenderOption? {
-                    for renderMode in RenderOption.allCases {
-                        if renderMode.title == title { return renderMode }
+                static func from(title:String) -> DataMetric? {
+                    for dataMetric in DataMetric.allCases {
+                        if dataMetric.title == title { return dataMetric }
                     }
                     return nil
                 }
@@ -216,8 +231,8 @@ extension Timestream {
                 return nil
             }
             
-            func renderColor(option: RenderOption, sample:Timestream.Sample) -> RGBAColor {
-                let invert = option == .retrogrades && sample.planetState.retrogradeState == .retrograde
+            func renderColor(dataMetric: DataMetric, sample:Timestream.Sample) -> RGBAColor {
+                let invert = dataMetric == .retrogrades && sample.planetState.retrogradeState == .retrograde
                 switch self {
                 case .clear:
                     return RGBAColor.clear
@@ -228,14 +243,14 @@ extension Timestream {
                 case .blackWhite:
                     return invert ? RGBAColor.black : RGBAColor.white
                 case .greyscale:
-                    switch option {
+                    switch dataMetric {
                     case .retrogrades: return RGBAColor.greyscale(brightness: 0)
                     case .harmonics: return RGBAColor.greyscale(brightness: 0)
                     case .distance: return RGBAColor.greyscale(brightness: 0)
                     case .gravimetrics: return RGBAColor.greyscale(brightness: 0)
                     }
                 case .alphascale:
-                    switch option {
+                    switch dataMetric {
                     case .retrogrades: return RGBAColor.alphascale(opacity: 0)
                     case .harmonics: return RGBAColor.alphascale(opacity: 0)
                     case .distance: return RGBAColor.alphascale(opacity: 0)
