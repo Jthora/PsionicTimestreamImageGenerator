@@ -10,14 +10,14 @@ import Foundation
 
 extension Date {
     
-    init?(year: Int, month: Int, day: Int, timeZone:TimeZone, hour:Int, minute:Int) {
+    init?(year: Int, month: Int, day: Int, timeZone:TimeZone?, hour:Int, minute:Int) {
         
         // Specify date components
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        dateComponents.timeZone = timeZone
+        dateComponents.timeZone = timeZone ?? TimeZone(secondsFromGMT: 0)
         dateComponents.hour = hour
         dateComponents.minute = minute
         

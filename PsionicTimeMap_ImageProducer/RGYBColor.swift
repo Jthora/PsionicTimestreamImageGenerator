@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import SwiftUI
 
+// Red Green Yellow Blue Color
 struct RGYBColor
 {
     var red:CGFloat = 0
@@ -77,13 +79,67 @@ struct RGYBColor
     }
 }
 
+// Red Green Blue Alpha Color
 struct RGBAColor
 {
+    // Red 0-255
     var Red:   UInt8 = 0
+    
+    // Red 0-1
+    var r:Double {
+        get {
+            return Double(Red)/255
+        }
+        set {
+            let red = max(min(newValue,0),1)
+            Red = UInt8(red * 255)
+        }
+    }
+    
+    // Green 0-255
     var Green: UInt8 = 0
+    
+    // Green 0-1
+    var g:Double {
+        get {
+            return Double(Green)/255
+        }
+        set {
+            let green = max(min(newValue,0),1)
+            Green = UInt8(green * 255)
+        }
+    }
+    
+    // Blue 0-255
     var Blue:  UInt8 = 0
+    
+    // Blue 0-1
+    var b:Double {
+        get {
+            return Double(Green)/255
+        }
+        set {
+            let blue = max(min(newValue,0),1)
+            Green = UInt8(blue * 255)
+        }
+    }
+    
+    // Alpha 0-255
     var Alpha: UInt8 = 255
     
+    // Alpha 0-1
+    var a:Double {
+        get {
+            return Double(Alpha)/255
+        }
+        set {
+            let alpha = max(min(newValue,0),1)
+            Alpha = UInt8(alpha * 255)
+        }
+    }
+    
+    
+    // Natural Harmonics Init
     init(degrees:Float, invert:Bool = false, solidColors:Bool = false) {
         
         let rgybColor = RGYBColor(degrees: degrees, solidColors: solidColors)
@@ -99,6 +155,7 @@ struct RGBAColor
         }
     }
     
+    // RGBA Init
     init(red:UInt8 = 0, green:UInt8 = 0, blue:UInt8 = 0, alpha:UInt8 = 255) {
         Red = red
         Green = green
@@ -106,15 +163,199 @@ struct RGBAColor
         Alpha = alpha
     }
     
+    // Hue
+    var hue:Double {
+        get {
+            let min = min(min(r,g),b)
+            let max = max(max(r,g),b)
+            
+            if min == max {
+                return 0
+            }
+            
+            var hue:Double = 0
+            if max == r {
+                hue = (g-b) / (max-min)
+            } else if max == g {
+                hue = (b-r) / (max-min)
+            } else {
+                hue = (r-g) / (max-min)
+            }
+            
+            // Base 360 for compatibility with Degrees
+            hue = hue * 60
+            if (hue < 0) {
+                hue = hue + 360
+            }
+            
+            return hue
+        }
+    }
+    
+    // Black Color
     static var black:RGBAColor {
         return RGBAColor(red: 0, green: 0, blue: 0, alpha: 255)
     }
     
+    // White Color
     static var white:RGBAColor {
         return RGBAColor(red: 255, green: 255, blue: 255, alpha: 255)
     }
     
+    // Transparent
     static var clear:RGBAColor {
         return RGBAColor(red: 255, green: 255, blue: 255, alpha: 0)
     }
+    
+    // Alpha Channel
+    static func alphascale(currentValue:Double, minValue:Double, maxValue:Double) -> RGBAColor {
+        let relativeValueRange = minValue - maxValue
+        let relativeValue = currentValue - minValue
+        return alphascale(opacity: relativeValue/relativeValueRange)
+    }
+    static func alphascale(opacity:Double) -> RGBAColor {
+        return RGBAColor(red: 0,
+                         green: 0,
+                         blue: 0,
+                         alpha: UInt8(Double(opacity/255)))
+    }
+    
+    // Greyscale
+    static func greyscale(currentValue:Double, minValue:Double, maxValue:Double) -> RGBAColor {
+        let relativeValueRange = minValue - maxValue
+        let relativeValue = currentValue - minValue
+        return greyscale(brightness: relativeValue/relativeValueRange)
+    }
+    static func greyscale(brightness:Double) -> RGBAColor {
+        return RGBAColor(red: UInt8(Double(brightness/255)),
+                         green: UInt8(Double(brightness/255)),
+                         blue: UInt8(Double(brightness/255)),
+                         alpha: 255)
+    }
+    
+    // Changes the RGB/HEX temporarily to a HSL-Value, modifies that value
+    // and changes it back to RGB/HEX.
+
+    mutating func changeHue(degree: Double){
+        let hsl = hsl
+        var h = hsl.h
+        h += degree
+        if (h > 360) {
+            h -= 360
+        }
+        else if (h < 0) {
+            h += 360
+        }
+        let n = changeHSL(h: h, s: hsl.s, l: hsl.l)
+        self.Red = n.Red
+        self.Green = n.Green
+        self.Blue = n.Blue
+        self.Alpha = n.Alpha
+    }
+    
+    var hsl:HSLColor {
+        get {
+            var r = self.r,
+                g = self.g,
+                b = self.b,
+                cMax: Double = max(r, max(g, b)),
+                cMin: Double = min(r, max(g, b)),
+                delta: Double = cMax - cMin,
+                l: Double = (cMax + cMin) / 2,
+                h: Double = 0,
+                s: Double = 0;
+
+            if (delta == 0) {
+                h = 0;
+            }
+            else if (cMax == r) {
+                h = 60 * (((g - b) / delta).truncatingRemainder(dividingBy: 6));
+            }
+            else if (cMax == g) {
+                h = 60 * (((b - r) / delta) + 2);
+            }
+            else {
+                h = 60 * (((r - g) / delta) + 4);
+            }
+
+            if (delta == 0) {
+                s = 0;
+            }
+            else {
+                s = (delta/(1-abs(2*l - 1)))
+            }
+
+            return HSLColor(h: h, s: s, l: l)
+        }
+        set {
+            let n = changeHSL(newValue)
+            self.Red = n.Red
+            self.Green = n.Green
+            self.Blue = n.Blue
+            self.Alpha = n.Alpha
+        }
+    }
+
+    // Set HSL
+    func changeHSL(_ hsl:HSLColor) -> RGBAColor { return changeHSL(h: hsl.h, s: hsl.s, l: hsl.l) }
+    func changeHSL(h: Double, s: Double, l: Double) -> RGBAColor {
+        var c: Double = (1 - abs(2 * l - 1)) * s,
+            x: Double = c * ( 1 - abs((h / 60 ).truncatingRemainder(dividingBy: 2) - 1 )),
+            m: Double = l - c / 2,
+            r: Double = r,
+            g: Double = g,
+            b: Double = b
+
+        if (h < 60) {
+            r = c;
+            g = x;
+            b = 0;
+        }
+        else if (h < 120) {
+            r = x;
+            g = c;
+            b = 0;
+        }
+        else if (h < 180) {
+            r = 0;
+            g = c;
+            b = x;
+        }
+        else if (h < 240) {
+            r = 0;
+            g = x;
+            b = c;
+        }
+        else if (h < 300) {
+            r = x;
+            g = 0;
+            b = c;
+        }
+        else {
+            r = c;
+            g = 0;
+            b = x;
+        }
+
+        return RGBAColor(red: normalizeRGB(r, m), green: normalizeRGB(g, m), blue: normalizeRGB(b, m), alpha: Alpha)
+    }
+
+    func normalizeRGB(_ color:Double, _ magnitude:Double) -> UInt8 {
+        var c: Double = floor((color + magnitude) * 255);
+        if (c < 0) {
+            c = 0
+        }
+        return UInt8(color)
+    }
+    
+    // HEX String
+//    func rgbToHex(r :UInt8, g:UInt8, b:UInt8) {
+//        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+//    }
+}
+
+struct HSLColor {
+    var h:Double
+    var s:Double
+    var l:Double
 }

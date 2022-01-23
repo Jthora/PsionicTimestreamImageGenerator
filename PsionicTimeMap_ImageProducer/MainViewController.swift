@@ -27,15 +27,24 @@ class MainViewController: NSViewController {
     @IBOutlet weak var parsingLabel: NSTextField!
     
     // Render Settings
-    @IBOutlet weak var popupList: NSPopUpButton!
-    @IBOutlet weak var generateButton: NSButton!
-    @IBOutlet weak var popupRenderList: NSPopUpButton!
+    @IBOutlet weak var planetOptionPopupList: NSPopUpButton!
+    @IBOutlet weak var colorRenderModePopupList: NSPopUpButton!
+    @IBOutlet weak var renderOptionPopupList: NSPopUpButton!
     @IBOutlet weak var filenamePrefix: NSTextField!
+    
+    // Generate Image Strip
+    @IBOutlet weak var generateButton: NSButton!
     
     // Support Buttons
     @IBOutlet weak var helpButton: NSButton!
     @IBOutlet weak var infoButton: NSButton!
     @IBOutlet weak var settingsButton: NSButton!
+    
+    // Render Console
+    @IBOutlet weak var renderConsoleTextField: NSTextField!
+    
+    // Filename Example
+    @IBOutlet weak var filenameExampleLabel: NSTextField!
     
     // UI States
     enum UIState {
@@ -47,100 +56,114 @@ class MainViewController: NSViewController {
     // Current UI State
     var uiState: UIState = .notParsed {
         didSet {
-            DispatchQueue.main.async {
-                switch self.uiState {
-                case .notParsed:
-                    // Empty Progress Indicator
-                    self.parseProgressIndicator.doubleValue = 0
-                    
-                    // Parse and Reset
-                    self.parseDataButton.isEnabled = true
-                    self.resetDataParserButton.isEnabled = false
-                    
-                    // Parsing Status
-                    self.parsingLabel.isHidden = true
-                    self.parsingLabel.stringValue = "Ready"
-                    
-                    // Options and Generate Button
-                    self.popupList.isEnabled = false
-                    self.popupRenderList.isEnabled = false
-                    self.generateButton.isEnabled = false
-                    
-                    // Date Pickers
-                    self.startDatePicker.isEnabled = true
-                    self.endDatePicker.isEnabled = true
-                    
-                    // Markers
-                    self.checkboxMarkMonths.isEnabled = false
-                    self.markerMonthsStepper.isEnabled = false
-                    self.markerMonthsTextField.isEnabled = false
-                    self.checkboxMarkYears.isEnabled = false
-                    self.markerYearsStepper.isEnabled = false
-                    self.markerYearsTextField.isEnabled = false
-                    
-                    // Filename Prefix
-                    self.filenamePrefix.isEnabled = false
-                    
-                case .parsing:
-                    // Parse and Reset
-                    self.parsingLabel.isHidden = false
-                    self.parseDataButton.isEnabled = false
-                    self.resetDataParserButton.isEnabled = false
-                    
-                    // Parsing Status
-                    self.parsingLabel.stringValue = "Parsing..."
-                    
-                    // Options and Generate Button
-                    self.popupList.isEnabled = false
-                    self.popupRenderList.isEnabled = false
-                    self.generateButton.isEnabled = false
-                    
-                    // Date Pickers
-                    self.startDatePicker.isEnabled = false
-                    self.endDatePicker.isEnabled = false
-                    
-                    // Markers
-                    self.checkboxMarkMonths.isEnabled = false
-                    self.markerMonthsStepper.isEnabled = false
-                    self.markerMonthsTextField.isEnabled = false
-                    self.checkboxMarkYears.isEnabled = false
-                    self.markerYearsStepper.isEnabled = false
-                    self.markerYearsTextField.isEnabled = false
-                    
-                    // Filename Prefix
-                    self.filenamePrefix.isEnabled = false
-                    
-                case .parsed:
-                    // Fill Progress Indicator
-                    self.parseProgressIndicator.doubleValue = 1
-                    
-                    // Parse and Reset
-                    self.parseDataButton.isEnabled = false
-                    self.resetDataParserButton.isEnabled = true
-                    
-                    // Parsing Status
-                    self.parsingLabel.stringValue = "Parsed"
-                    
-                    // Options and Generate Button
-                    self.popupList.isEnabled = true
-                    self.popupRenderList.isEnabled = true
-                    self.generateButton.isEnabled = true
-                    
-                    // Date Pickers
-                    self.startDatePicker.isEnabled = false
-                    self.endDatePicker.isEnabled = false
-                    
-                    // Markers
-                    self.checkboxMarkMonths.isEnabled = true
-                    self.markerMonthsStepper.isEnabled = true
-                    self.markerMonthsTextField.isEnabled = true
-                    self.checkboxMarkYears.isEnabled = true
-                    self.markerYearsStepper.isEnabled = true
-                    self.markerYearsTextField.isEnabled = true
-                    
-                    // Filename Prefix
-                    self.filenamePrefix.isEnabled = true
-                }
+            updateUIState()
+        }
+    }
+    
+    // Update UI State
+    func updateUIState() {
+        DispatchQueue.main.async {
+            switch self.uiState {
+            case .notParsed:
+                // Empty Progress Indicator
+                self.parseProgressIndicator.doubleValue = 0
+                
+                // Parse and Reset
+                self.parseDataButton.isEnabled = true
+                self.resetDataParserButton.isEnabled = false
+                
+                // Parsing Status
+                self.parsingLabel.isHidden = true
+                self.parsingLabel.stringValue = "Ready"
+                
+                // Render Options
+                self.planetOptionPopupList.isEnabled = false
+                self.colorRenderModePopupList.isEnabled = false
+                self.renderOptionPopupList.isEnabled = false
+                
+                // Generate Button
+                self.generateButton.isEnabled = false
+                
+                // Date Pickers
+                self.startDatePicker.isEnabled = true
+                self.endDatePicker.isEnabled = true
+                
+                // Markers
+                self.checkboxMarkMonths.isEnabled = false
+                self.markerMonthsStepper.isEnabled = false
+                self.markerMonthsTextField.isEnabled = false
+                self.checkboxMarkYears.isEnabled = false
+                self.markerYearsStepper.isEnabled = false
+                self.markerYearsTextField.isEnabled = false
+                
+                // Filename Prefix
+                self.filenamePrefix.isEnabled = false
+                
+            case .parsing:
+                // Parse and Reset
+                self.parsingLabel.isHidden = false
+                self.parseDataButton.isEnabled = false
+                self.resetDataParserButton.isEnabled = false
+                
+                // Parsing Status
+                self.parsingLabel.stringValue = "Parsing..."
+                
+                // Render Options
+                self.planetOptionPopupList.isEnabled = false
+                self.colorRenderModePopupList.isEnabled = false
+                self.renderOptionPopupList.isEnabled = false
+                
+                // Generate Button
+                self.generateButton.isEnabled = false
+                
+                // Date Pickers
+                self.startDatePicker.isEnabled = false
+                self.endDatePicker.isEnabled = false
+                
+                // Markers
+                self.checkboxMarkMonths.isEnabled = false
+                self.markerMonthsStepper.isEnabled = false
+                self.markerMonthsTextField.isEnabled = false
+                self.checkboxMarkYears.isEnabled = false
+                self.markerYearsStepper.isEnabled = false
+                self.markerYearsTextField.isEnabled = false
+                
+                // Filename Prefix
+                self.filenamePrefix.isEnabled = false
+                
+            case .parsed:
+                // Fill Progress Indicator
+                self.parseProgressIndicator.doubleValue = 1
+                
+                // Parse and Reset
+                self.parseDataButton.isEnabled = false
+                self.resetDataParserButton.isEnabled = true
+                
+                // Parsing Status
+                self.parsingLabel.stringValue = "Parsed"
+                
+                // Render Options
+                self.planetOptionPopupList.isEnabled = true
+                self.colorRenderModePopupList.isEnabled = true
+                self.renderOptionPopupList.isEnabled = true
+                
+                // Generate Button
+                self.generateButton.isEnabled = true
+                
+                // Date Pickers
+                self.startDatePicker.isEnabled = false
+                self.endDatePicker.isEnabled = false
+                
+                // Markers
+                self.checkboxMarkMonths.isEnabled = true
+                self.markerMonthsStepper.isEnabled = true
+                self.markerMonthsTextField.isEnabled = true
+                self.checkboxMarkYears.isEnabled = true
+                self.markerYearsStepper.isEnabled = true
+                self.markerYearsTextField.isEnabled = true
+                
+                // Filename Prefix
+                self.filenamePrefix.isEnabled = true
             }
         }
     }
@@ -148,6 +171,7 @@ class MainViewController: NSViewController {
     // View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        RenderLog.renderConsoleTextField = renderConsoleTextField
         uiState = .notParsed
         setupUI()
     }
@@ -160,34 +184,62 @@ class MainViewController: NSViewController {
         infoButton.toolTip = "Info"
         helpButton.toolTip = "Instructions"
         
-        
         // Clear Popup Lists
-        popupList.removeAllItems()
-        popupRenderList.removeAllItems()
+        planetOptionPopupList.removeAllItems()
+        colorRenderModePopupList.removeAllItems()
+        renderOptionPopupList.removeAllItems()
         
         // Add an "All" Option for Auto-generating image strips for each available planet option
-        popupList.addItem(withTitle: Constants.Option.All.rawValue)
+        planetOptionPopupList.addItem(withTitle: Settings.PlanetOption.all.title)
         
         // Add Planets as Options
-        for planet in EphemerisDataParser.Planet.allCases {
-            popupList.addItem(withTitle: planet.rawValue)
+        for planet in Timestream.Planet.allCases {
+            planetOptionPopupList.addItem(withTitle: Settings.PlanetOption.specific(planet: planet).title)
         }
         
         // Add an Option for each Planet
-        for colorRenderMode in ColorRenderMode.allCases {
-            popupRenderList.addItem(withTitle: colorRenderMode.title)
+        for colorRenderMode in Timestream.ImageGenerator.ColorRenderMode.allCases {
+            colorRenderModePopupList.addItem(withTitle: colorRenderMode.title)
+        }
+        
+        // Add an Option for each Planet
+        for renderOption in Timestream.ImageGenerator.ColorRenderMode.RenderOption.allCases {
+            renderOptionPopupList.addItem(withTitle: renderOption.title)
         }
         
         // Preselection First Option "All"
-        popupList.selectItem(at: 0)
-        
-        // Set Parser
-        EphemerisDataParser.main.startDate = startDatePicker.dateValue
-        EphemerisDataParser.main.endDate = endDatePicker.dateValue
+        planetOptionPopupList.selectItem(at: 0)
+        colorRenderModePopupList.selectItem(at: 0)
+        renderOptionPopupList.selectItem(at: 0)
         
         // Numbers Only
         markerYearsTextField.formatter = OnlyIntegerValueFormatter()
         markerMonthsTextField.formatter = OnlyIntegerValueFormatter()
+        
+        // Update UI State
+        updateUI(state: state)
+    }
+    
+    // Update UI
+    func updateUI(state:UIState = .notParsed) {
+        updateFilenameExample()
+        updateUIState()
+    }
+    
+    func updateFilenameExample() {
+        let filenameExample:String = Timestream.ImageStrip.createFilename(filenamePrefix: Settings.filenamePrefix,
+                                                                          planet: .sun,
+                                                                          colorRenderMode: Settings.colorRenderMode,
+                                                                          renderOption: Settings.renderOption,
+                                                                          startDate: Settings.startDate,
+                                                                          endDate: Settings.endDate,
+                                                                          samples: Settings.days,
+                                                                          markYears: Settings.markYears,
+                                                                          markMonths: Settings.markMonths,
+                                                                          showMarkings: true,
+                                                                          showSampleCount: true,
+                                                                          showDateRange: true)
+        filenameExampleLabel.stringValue = "Filename Example: \(filenameExample)"
     }
     
     // Parse Ephemeris Data (galactic centered - sidereal astrology - planetary positions) [Galactic Centered Only!]
@@ -197,13 +249,14 @@ class MainViewController: NSViewController {
         uiState = .parsing
         
         // Parse from Start Date to End Date
-        EphemerisDataParser.main.parse(from: startDatePicker.dateValue,
+        Ephemeris.parser.parse(from: startDatePicker.dateValue,
                                        to: endDatePicker.dateValue) {  [weak self] percentComplete in
             DispatchQueue.main.async {
                 // Set Percent Complete (0 to 1)
                 self?.parseProgressIndicator.doubleValue = percentComplete
             }
-        } onComplete: { [weak self] in
+        } onComplete: { [weak self] timestreams in
+            Settings.timestreams = timestreams
             DispatchQueue.main.async {
                 // Set to Full
                 self?.uiState = .parsed
@@ -213,71 +266,51 @@ class MainViewController: NSViewController {
     
     // Generate & Save PNG Image Strip
     @IBAction func generateButtonPressed(_ sender: NSButton) {
-        
-        // Date Range
-        let startDate = startDatePicker.dateValue
-        let endDate = endDatePicker.dateValue
-        
-        // Setup Parser
-        EphemerisDataParser.main.startDate = startDate
-        EphemerisDataParser.main.endDate = endDate
-        
-        // Selected Option
-        guard let selectedPlanetOption = popupList.titleOfSelectedItem else {
-            print("ERROR:: generateButtonPressed:\n titleOfSelectedItem doesn't exist, found Nil")
-            return
-        }
-        
         // Render All Options or Render Only Selected
-        if selectedPlanetOption == Constants.Option.All.rawValue { // Yes: Render All
-            PsionicImageGenerator.main.saveAllPlanetsToDisk(filenamePrefix: filenamePrefix.stringValue, startDate: startDate, endDate: endDate)
-        } else { // No: Only Render the Specific Option Selected
-            
-            // Get Selected Planet
-            guard let planet = EphemerisDataParser.Planet.init(rawValue: selectedPlanetOption) else {
-                print("ERROR:: generateButtonPressed:\n Cannot generate image strip from popup list")
+        switch Settings.planetOption {
+        case .all:
+            // Generate Image Strip for Every Planet
+            guard let timestreams = Settings.timestreams else {
+                RenderLog.error("Timestreams missing")
                 return
             }
-            
-            // Create Samples
-            guard let platnetStateTimeline = EphemerisDataParser.main.platnetStateTimeline(for: planet) else {
-                print("ERROR:: generateButtonPressed:\n Cannot get degreesArray from Planet")
+            Timestream.ImageGenerator.saveMultipleToDisk(timestreams: timestreams,
+                                                         colorRenderMode: Settings.colorRenderMode,
+                                                         renderOption: Settings.renderOption,
+                                                         markYears: Settings.markYears,
+                                                         markMonths: Settings.markMonths,
+                                                         markerYearsWidth: Settings.markerYearsWidth,
+                                                         markerMonthsWidth: Settings.markerMonthsWidth,
+                                                         filenamePrefix: Settings.filenamePrefix,
+                                                         startDate: Settings.startDate,
+                                                         endDate: Settings.endDate)
+        case .specific(let planet):
+            // Generate Image Strip for Single Planet
+            guard let timestream = Settings.timestreams?[planet],
+                  let imageStrip = Timestream.ImageGenerator.generateStrip(timestream: timestream,
+                                                                           colorRenderMode: Settings.colorRenderMode,
+                                                                           renderOption: Settings.renderOption,
+                                                                           markerYearsWidth: Settings.markerYearsWidth,
+                                                                           markerMonthsWidth: Settings.markerMonthsWidth,
+                                                                           markYears: Settings.markYears,
+                                                                           markMonths: Settings.markMonths) else {
+                RenderLog.error("generateButtonPressed:\n Cannot generateStrip")
                 return
             }
-            
-            // Set Render Mode to: Selected Render Option from PopUp List
-            guard let colorRenderModeTitle = popupRenderList.titleOfSelectedItem,
-                  let colorRenderMode = ColorRenderMode.from(title: colorRenderModeTitle) else {
-                print("ERROR:: generateButtonPressed:\n RenderMode UI selectedItem not recognized")
-                return
-            }
-            PsionicImageGenerator.main.colorRenderMode = colorRenderMode
-            
-            // Generate Psionic Image Strip
-            guard let imageStrip = PsionicImageGenerator.main.generateStrip(planet: planet, planetStateTimeline: platnetStateTimeline, startDate: startDate, endDate: endDate) else {
-                print("ERROR:: generateButtonPressed:\n Cannot generateStrip")
-                return
-            }
-            imageStrip.saveToDisk()
+            imageStrip.save()
         }
     }
     
     // Start Date Picker Changed
     @IBAction func startDatePickerChanged(_ sender: NSDatePicker) {
-        
-        EphemerisDataParser.main.startDate = sender.dateValue
-        popupList.isEnabled = false
-        generateButton.isEnabled = false
-        parseDataButton.isEnabled = true
+        Settings.startDate = sender.dateValue
+        updateUI()
     }
     
     // End Date Picker Changed
     @IBAction func endDatePickerChanged(_ sender: NSDatePicker) {
-        
-        EphemerisDataParser.main.endDate = sender.dateValue
-        popupList.isEnabled = false
-        generateButton.isEnabled = false
-        parseDataButton.isEnabled = true
+        Settings.endDate = sender.dateValue
+        updateUI()
     }
     
     // Represented Object
@@ -291,30 +324,57 @@ class MainViewController: NSViewController {
     @IBAction func markYearsChecked(_ sender: NSButton) {
         switch sender.state {
         case .on:
-            PsionicImageGenerator.main.markYears = true
+            Settings.markYears = true
         default:
-            PsionicImageGenerator.main.markYears = false
+            Settings.markYears = false
         }
+        updateUI()
     }
     
     // Mark Months Checked
     @IBAction func markMonthsChecked(_ sender: NSButton) {
         switch sender.state {
         case .on:
-            PsionicImageGenerator.main.markMonths = true
+            Settings.markMonths = true
         default:
-            PsionicImageGenerator.main.markMonths = false
+            Settings.markMonths = false
         }
+        updateUI()
     }
     
     // Planet Option Selected
     @IBAction func onSelectPlanetOption(_ sender: NSPopUpButton) {
         print("Planet Option Selected: \(sender.titleOfSelectedItem ?? "??")")
+        // Select Option
+        guard let selectedPlanetOption = planetOptionPopupList.titleOfSelectedItem,
+              let planetOption = Settings.PlanetOption.from(title: selectedPlanetOption) else {
+               RenderLog.error("Select Planet doesn't exist... how?")
+            return
+        }
+        Settings.planetOption = planetOption
+        updateUI()
     }
-    
     
     // Render Option Selected
     @IBAction func onSelectRenderOption(_ sender: NSPopUpButton) {
+        print("Render Option Selected: \(sender.titleOfSelectedItem ?? "??")")
+        
+        guard let renderOptionTitle = sender.titleOfSelectedItem else {
+            print("ERROR:: onSelectRenderOption:\n Nil Title Selected?")
+            return
+        }
+        
+        guard let renderOption = Timestream.ImageGenerator.ColorRenderMode.RenderOption.from(title: renderOptionTitle) else {
+            print("ERROR:: onSelectRenderOption:\n Title Selected is NOT a Render Mode")
+            return
+        }
+        
+        Settings.renderOption = renderOption
+        updateUI()
+    }
+    
+    // Render Option Selected
+    @IBAction func onSelectColorRenderMode(_ sender: NSPopUpButton) {
         print("Render Option Selected: \(sender.titleOfSelectedItem ?? "??")")
         
         guard let colorRenderModeTitle = sender.titleOfSelectedItem else {
@@ -322,12 +382,13 @@ class MainViewController: NSViewController {
             return
         }
         
-        guard let colorRenderMode = ColorRenderMode.from(title: colorRenderModeTitle) else {
+        guard let colorRenderMode = Timestream.ImageGenerator.ColorRenderMode.from(title: colorRenderModeTitle) else {
             print("ERROR:: onSelectRenderOption:\n Title Selected is NOT a Render Mode")
             return
         }
         
-        PsionicImageGenerator.main.colorRenderMode = colorRenderMode
+        Settings.colorRenderMode = colorRenderMode
+        updateUI()
     }
     
     // Help Button Clicked
@@ -338,30 +399,34 @@ class MainViewController: NSViewController {
     // Mark Years Stepper Changed
     @IBAction func markYearsStepperChanged(_ sender: NSStepper) {
         markerYearsTextField.stringValue = "\(sender.integerValue)"
-        PsionicImageGenerator.main.markerYearsWidth = markerYearsTextField.integerValue
+        Settings.markerYearsWidth = markerYearsTextField.integerValue
+        updateUI()
     }
     
     // Mark Months Stepper Changed
     @IBAction func markMonthsStepperChanged(_ sender: NSStepper) {
         markerMonthsTextField.stringValue = "\(sender.integerValue)"
-        PsionicImageGenerator.main.markerMonthsWidth = markerMonthsTextField.integerValue
+        Settings.markerMonthsWidth = markerMonthsTextField.integerValue
+        updateUI()
     }
     
     // Mark Years TextField Changed
     @IBAction func markYearsTextFieldChanged(_ sender: NSTextField) {
         markerYearsStepper.integerValue = sender.integerValue
-        PsionicImageGenerator.main.markerYearsWidth = sender.integerValue
+        Settings.markerYearsWidth = sender.integerValue
+        updateUI()
     }
     
     // Mark Months TextField Changed
     @IBAction func marksMonthsTextFieldChanged(_ sender: NSTextField) {
         markerMonthsStepper.integerValue = sender.integerValue
-        PsionicImageGenerator.main.markerMonthsWidth = sender.integerValue
+        Settings.markerMonthsWidth = sender.integerValue
+        updateUI()
     }
     
     // Reset Button Clicked
     @IBAction func resetDataParserButtonClicked(_ sender: NSButton) {
-        EphemerisDataParser.main.resetParser()
+        Ephemeris.parser.resetParser()
         resetUI()
     }
     
@@ -369,6 +434,40 @@ class MainViewController: NSViewController {
     func resetUI() {
         uiState = .notParsed
         setupUI()
+    }
+    
+    // Update Settings based on UI
+    func updateUIFromSettings() {
+        
+    }
+    
+    // Update Settings based on UI
+    func updateSettingsFromUI() {
+        
+        // Selected Date Range
+        Settings.startDate = startDatePicker.dateValue
+        Settings.endDate = endDatePicker.dateValue
+        
+        // Selected Option
+        if let selectedPlanetOptionTitle = planetOptionPopupList.titleOfSelectedItem,
+            let selectedPlanetOption = Settings.PlanetOption.from(title: selectedPlanetOptionTitle) {
+            // Render All Options or Render Only Selected
+            Settings.planetOption = selectedPlanetOption
+        }
+        
+        // Selected Render Mode
+        if let colorRenderModeTitle = colorRenderModePopupList.titleOfSelectedItem,
+              let colorRenderMode = Timestream.ImageGenerator.ColorRenderMode.from(title: colorRenderModeTitle) {
+            Settings.colorRenderMode = colorRenderMode
+        }
+        
+        
+        
+    }
+    
+    // Clear Render Console
+    func clearConsole() {
+        renderConsoleTextField.stringValue = ""
     }
 }
 
